@@ -1,0 +1,443 @@
+{
+  "displayName": "挑战杯 · 国家级优胜奖",
+  "zh": {
+    "metaDescription": "第十九届挑战杯全国大学生课外学术科技作品竞赛国家级优胜奖。基于多源数据的巨灾预警与减损技术研究，负责编程开发与语义分析模块。",
+    "sections": [
+      {
+        "heading": "获奖证书",
+        "blocks": [
+          {
+            "kind": "image",
+            "caption": "查看证书",
+            "src": "/api/projects/asset/catastrophe-warning/certificate.jpg"
+          }
+        ]
+      },
+      {
+        "heading": "论文全文",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "完整竞赛论文（130+ 页，含语义分析、风险预测、保险决策、应急调度四大模块及附录）可通过下方链接下载或在线预览。"
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/catastrophe-warning/paper.pdf",
+            "label": "下载竞赛论文 PDF"
+          }
+        ]
+      },
+      {
+        "heading": "项目概览",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "第十九届“挑战杯”全国大学生课外学术科技作品竞赛项目《基于多源数据的巨灾预警与减损技术研究》，获国家级优胜奖。项目以洪涝灾害为研究对象，综合运用语义分析、机器学习、计量经济学和运筹优化方法，构建了从灾害预警到灾后减损的全链路技术方案。"
+          },
+          {
+            "kind": "text",
+            "text": "我担任编程开发与语义分析模块负责人，主要负责多平台网络爬虫开发、文本预处理流水线搭建、TF-IDF 特征提取、LDA 主题模型训练以及词云图等可视化模块开发。我的工作为整个研究提供了数据基础和问题发现——通过语义分析从海量网络文本中识别出‘多损失、少认知’的核心矛盾，直接驱动了后续的保险决策研究和问卷设计。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/catastrophe-warning/roadmap.png",
+            "alt": "研究技术路线图",
+            "caption": "图：研究技术路线——从语义分析到风险预测、保险决策、应急调度的全链路框架"
+          }
+        ]
+      },
+      {
+        "heading": "研究框架：四大模块",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "项目从四个层面系统性地研究洪涝灾害预警与减损："
+          },
+          {
+            "kind": "table",
+            "caption": "研究框架",
+            "headers": [
+              "模块",
+              "核心方法",
+              "我的参与"
+            ],
+            "rows": [
+              [
+                "① 语义分析与灾害解构",
+                "Python 爬虫 + TF-IDF + LDA 主题模型",
+                "模块负责人，独立完成"
+              ],
+              [
+                "② 洪灾风险预测",
+                "XGBoost + SHAP 可解释分析",
+                "辅助编程"
+              ],
+              [
+                "③ 保险参与决策研究",
+                "问卷调查 + 有序/多项 Logit 模型",
+                "基于①的结论设计问卷"
+              ],
+              [
+                "④ 应急资源调度优化",
+                "改进遗传算法 + 粒子群算法",
+                "辅助编程"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "模块一：多源数据语义分析（我负责的核心模块）",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "为了从公众视角理解洪涝灾害的关注焦点，我开发了完整的数据采集与分析流水线，覆盖应急管理部官网、平安保险官方微博、抖音、小红书等多个平台。技术流程如下："
+          },
+          {
+            "kind": "table",
+            "caption": "语义分析技术流水线",
+            "headers": [
+              "步骤",
+              "技术实现",
+              "产出"
+            ],
+            "rows": [
+              [
+                "数据采集",
+                "Python 爬虫（requests + BeautifulSoup），多平台关键词检索",
+                "159 篇官方文章 + 大量社交平台评论"
+              ],
+              [
+                "文本清洗",
+                "正则表达式去除 URL / 表情包 / 重复文本，繁简转换",
+                "清洁语料库"
+              ],
+              [
+                "中文分词",
+                "jieba 分词 + 自定义灾害领域词典",
+                "分词序列"
+              ],
+              [
+                "停用词过滤",
+                "加载停用词表，过滤单字和无义高频词",
+                "有效词表"
+              ],
+              [
+                "特征提取",
+                "TF-IDF 关键词权重计算 + Counter 词频统计",
+                "高频特征词排名"
+              ],
+              [
+                "可视化",
+                "wordcloud 库生成词云图（椭圆 mask + 中文字体渲染）",
+                "多源数据词云图"
+              ],
+              [
+                "主题建模",
+                "LDA（潜在狄利克雷分配）主题模型训练",
+                "四大主题识别"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "LDA 主题模型从语料中自动识别出四个核心主题：洪涝诱因（自然与地理因素）、保险认知（‘多损失’与‘少认知’的反差）、救灾减损（动态需求与新约束）、新式技术（精准预判与迅速响应）。其中‘多损失、少认知’的发现直接推动了第三模块的保险参与决策研究——我们据此设计了覆盖全国的问卷调查。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/catastrophe-warning/wordcloud.png",
+            "alt": "多源数据词云图",
+            "caption": "图：基于多平台爬取数据生成的词云图，洪涝、地震、台风等灾害类型突出显示"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/catastrophe-warning/loss-chart.png",
+            "alt": "近十年各灾害直接经济损失对比",
+            "caption": "图：近十年各灾害类型直接经济损失对比，洪涝灾害损失远超其他灾害类型"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/catastrophe-warning/death-chart.png",
+            "alt": "近十年各灾害死亡人数对比",
+            "caption": "图：近十年各灾害类型死亡人数对比，洪涝灾害始终具有较大波动性"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：词云生成",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "以下是我编写的词云生成核心代码。流程包括：读取多源文本 → jieba 中文分词 → 停用词过滤 → 词频统计 → 词云图渲染。"
+          },
+          {
+            "kind": "code",
+            "caption": "词云生成代码（main.py）— 点击展开",
+            "code": "import os\nfrom collections import Counter\nimport jieba\nimport wordcloud\n\n# 读取多源文本数据\nfiles = os.listdir('input')\ns = ''\nfor file in files:\n    with open(os.path.join('input', file), 'r', encoding='utf-8') as f:\n        fs = f.read()\n        if '========' in fs:  # 跳过文件头部标记\n            fs = fs.split('========')[1]\n        s += fs + '\n'\n\n# jieba 中文分词\nls = jieba.lcut(s)\n\n# 加载停用词表并过滤\nwith open('stopwords_people.txt', 'r', encoding='utf-8') as f:\n    stopwords = f.read().splitlines()\nfiltered = [w for w in ls if w not in stopwords and len(w) >= 2]\n\n# 词频统计\nword_count = Counter(filtered)\nprint('词频 TOP 20:')\nfor word, count in word_count.most_common(20):\n    print(f'{word}: {count}')\n\n# 生成词云图\nwc = wordcloud.WordCloud(\n    font_path='msyh.ttc', width=1000, height=700,\n    background_color='white', max_words=35, stopwords=stopwords\n)\nwc.generate(' '.join(ls))\nwc.to_file('wc.png')"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：椭圆形词云",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "在最终展示中，我还开发了基于椭圆 mask 的词云生成方案，通过 numpy 构建椭圆遮罩，使词云限制在椭圆轮廓内，视觉效果更美观。"
+          },
+          {
+            "kind": "code",
+            "caption": "椭圆词云代码（round.py）— 点击展开",
+            "code": "import json\nimport numpy as np\nimport wordcloud\n\n# 加载预计算的词频字典\nwith open('word_freq.json', 'r', encoding='utf-8') as f:\n    words_freq = json.load(f)\n\n# 构建椭圆遮罩（numpy 参数方程）\nx, y = np.ogrid[:600, :800]\nmask = ((x - 300) / 300) ** 2 + ((y - 400) / 400) ** 2 > 1\nmask = 255 * mask.astype(int)\n\n# 基于词频字典生成椭圆词云\nwc = wordcloud.WordCloud(\n    font_path='msyh.ttc', width=1000, height=700,\n    background_color='white', max_words=100,\n    mask=mask, max_font_size=100\n)\nwc.generate_from_frequencies(words_freq)\nwc.to_file('wordcloud_ellipse.png')"
+          }
+        ]
+      },
+      {
+        "heading": "其他模块简介",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "模块二（洪灾风险预测）：整合气象、地理、时序等多模态数据，使用 XGBoost 算法预测洪涝发生概率，并通过 SHAP 解释器揭示‘月份’、‘露点温度’、‘海拔’等关键驱动因子及其交互效应。"
+          },
+          {
+            "kind": "text",
+            "text": "模块三（保险参与决策）：基于语义分析识别出的‘多损失-少认知’问题设计全国问卷，收集 1000+ 份有效样本，采用有序 Logit 和多项 Logit 模型分析居民保险参与意愿的影响因素。"
+          },
+          {
+            "kind": "text",
+            "text": "模块四（应急资源调度）：构建‘县-市-省’三级两阶段动态调度模型，使用改进遗传算法（精英策略 + 重启机制）和粒子群算法求解，以江西省 2024 年洪涝为实例验证。"
+          }
+        ]
+      },
+      {
+        "heading": "个人收获",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "这是我首次将 NLP 技术应用于实际社会问题研究。从网络数据爬取、文本清洗、特征工程到主题建模的完整流程，让我建立了面向非结构化数据的分析能力。更重要的是，语义分析的结论（‘多损失-少认知’矛盾）直接驱动了后续三个模块的研究方向，让我体会到数据分析不仅是技术工作，更是问题发现的起点。"
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "metaDescription": "19th Challenge Cup National Award. Catastrophe early warning and loss reduction research based on multi-source data.",
+    "sections": [
+      {
+        "heading": "获奖证书",
+        "blocks": [
+          {
+            "kind": "image",
+            "caption": "查看证书",
+            "src": "/api/projects/asset/catastrophe-warning/certificate.jpg"
+          }
+        ]
+      },
+      {
+        "heading": "论文全文",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "完整竞赛论文（130+ 页，含语义分析、风险预测、保险决策、应急调度四大模块及附录）可通过下方链接下载或在线预览。"
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/catastrophe-warning/paper.pdf",
+            "label": "下载竞赛论文 PDF"
+          }
+        ]
+      },
+      {
+        "heading": "项目概览",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "第十九届“挑战杯”全国大学生课外学术科技作品竞赛项目《基于多源数据的巨灾预警与减损技术研究》，获国家级优胜奖。项目以洪涝灾害为研究对象，综合运用语义分析、机器学习、计量经济学和运筹优化方法，构建了从灾害预警到灾后减损的全链路技术方案。"
+          },
+          {
+            "kind": "text",
+            "text": "我担任编程开发与语义分析模块负责人，主要负责多平台网络爬虫开发、文本预处理流水线搭建、TF-IDF 特征提取、LDA 主题模型训练以及词云图等可视化模块开发。我的工作为整个研究提供了数据基础和问题发现——通过语义分析从海量网络文本中识别出‘多损失、少认知’的核心矛盾，直接驱动了后续的保险决策研究和问卷设计。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/catastrophe-warning/roadmap.png",
+            "alt": "研究技术路线图",
+            "caption": "图：研究技术路线——从语义分析到风险预测、保险决策、应急调度的全链路框架"
+          }
+        ]
+      },
+      {
+        "heading": "研究框架：四大模块",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "项目从四个层面系统性地研究洪涝灾害预警与减损："
+          },
+          {
+            "kind": "table",
+            "caption": "研究框架",
+            "headers": [
+              "模块",
+              "核心方法",
+              "我的参与"
+            ],
+            "rows": [
+              [
+                "① 语义分析与灾害解构",
+                "Python 爬虫 + TF-IDF + LDA 主题模型",
+                "模块负责人，独立完成"
+              ],
+              [
+                "② 洪灾风险预测",
+                "XGBoost + SHAP 可解释分析",
+                "辅助编程"
+              ],
+              [
+                "③ 保险参与决策研究",
+                "问卷调查 + 有序/多项 Logit 模型",
+                "基于①的结论设计问卷"
+              ],
+              [
+                "④ 应急资源调度优化",
+                "改进遗传算法 + 粒子群算法",
+                "辅助编程"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "模块一：多源数据语义分析（我负责的核心模块）",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "为了从公众视角理解洪涝灾害的关注焦点，我开发了完整的数据采集与分析流水线，覆盖应急管理部官网、平安保险官方微博、抖音、小红书等多个平台。技术流程如下："
+          },
+          {
+            "kind": "table",
+            "caption": "语义分析技术流水线",
+            "headers": [
+              "步骤",
+              "技术实现",
+              "产出"
+            ],
+            "rows": [
+              [
+                "数据采集",
+                "Python 爬虫（requests + BeautifulSoup），多平台关键词检索",
+                "159 篇官方文章 + 大量社交平台评论"
+              ],
+              [
+                "文本清洗",
+                "正则表达式去除 URL / 表情包 / 重复文本，繁简转换",
+                "清洁语料库"
+              ],
+              [
+                "中文分词",
+                "jieba 分词 + 自定义灾害领域词典",
+                "分词序列"
+              ],
+              [
+                "停用词过滤",
+                "加载停用词表，过滤单字和无义高频词",
+                "有效词表"
+              ],
+              [
+                "特征提取",
+                "TF-IDF 关键词权重计算 + Counter 词频统计",
+                "高频特征词排名"
+              ],
+              [
+                "可视化",
+                "wordcloud 库生成词云图（椭圆 mask + 中文字体渲染）",
+                "多源数据词云图"
+              ],
+              [
+                "主题建模",
+                "LDA（潜在狄利克雷分配）主题模型训练",
+                "四大主题识别"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "LDA 主题模型从语料中自动识别出四个核心主题：洪涝诱因（自然与地理因素）、保险认知（‘多损失’与‘少认知’的反差）、救灾减损（动态需求与新约束）、新式技术（精准预判与迅速响应）。其中‘多损失、少认知’的发现直接推动了第三模块的保险参与决策研究——我们据此设计了覆盖全国的问卷调查。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/catastrophe-warning/wordcloud.png",
+            "alt": "多源数据词云图",
+            "caption": "图：基于多平台爬取数据生成的词云图，洪涝、地震、台风等灾害类型突出显示"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/catastrophe-warning/loss-chart.png",
+            "alt": "近十年各灾害直接经济损失对比",
+            "caption": "图：近十年各灾害类型直接经济损失对比，洪涝灾害损失远超其他灾害类型"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/catastrophe-warning/death-chart.png",
+            "alt": "近十年各灾害死亡人数对比",
+            "caption": "图：近十年各灾害类型死亡人数对比，洪涝灾害始终具有较大波动性"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：词云生成",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "以下是我编写的词云生成核心代码。流程包括：读取多源文本 → jieba 中文分词 → 停用词过滤 → 词频统计 → 词云图渲染。"
+          },
+          {
+            "kind": "code",
+            "caption": "词云生成代码（main.py）— 点击展开",
+            "code": "import os\nfrom collections import Counter\nimport jieba\nimport wordcloud\n\n# 读取多源文本数据\nfiles = os.listdir('input')\ns = ''\nfor file in files:\n    with open(os.path.join('input', file), 'r', encoding='utf-8') as f:\n        fs = f.read()\n        if '========' in fs:  # 跳过文件头部标记\n            fs = fs.split('========')[1]\n        s += fs + '\n'\n\n# jieba 中文分词\nls = jieba.lcut(s)\n\n# 加载停用词表并过滤\nwith open('stopwords_people.txt', 'r', encoding='utf-8') as f:\n    stopwords = f.read().splitlines()\nfiltered = [w for w in ls if w not in stopwords and len(w) >= 2]\n\n# 词频统计\nword_count = Counter(filtered)\nprint('词频 TOP 20:')\nfor word, count in word_count.most_common(20):\n    print(f'{word}: {count}')\n\n# 生成词云图\nwc = wordcloud.WordCloud(\n    font_path='msyh.ttc', width=1000, height=700,\n    background_color='white', max_words=35, stopwords=stopwords\n)\nwc.generate(' '.join(ls))\nwc.to_file('wc.png')"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：椭圆形词云",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "在最终展示中，我还开发了基于椭圆 mask 的词云生成方案，通过 numpy 构建椭圆遮罩，使词云限制在椭圆轮廓内，视觉效果更美观。"
+          },
+          {
+            "kind": "code",
+            "caption": "椭圆词云代码（round.py）— 点击展开",
+            "code": "import json\nimport numpy as np\nimport wordcloud\n\n# 加载预计算的词频字典\nwith open('word_freq.json', 'r', encoding='utf-8') as f:\n    words_freq = json.load(f)\n\n# 构建椭圆遮罩（numpy 参数方程）\nx, y = np.ogrid[:600, :800]\nmask = ((x - 300) / 300) ** 2 + ((y - 400) / 400) ** 2 > 1\nmask = 255 * mask.astype(int)\n\n# 基于词频字典生成椭圆词云\nwc = wordcloud.WordCloud(\n    font_path='msyh.ttc', width=1000, height=700,\n    background_color='white', max_words=100,\n    mask=mask, max_font_size=100\n)\nwc.generate_from_frequencies(words_freq)\nwc.to_file('wordcloud_ellipse.png')"
+          }
+        ]
+      },
+      {
+        "heading": "其他模块简介",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "模块二（洪灾风险预测）：整合气象、地理、时序等多模态数据，使用 XGBoost 算法预测洪涝发生概率，并通过 SHAP 解释器揭示关键驱动因子及其交互效应。"
+          },
+          {
+            "kind": "text",
+            "text": "模块三（保险参与决策）：基于语义分析识别出的‘多损失-少认知’问题设计全国问卷，收集 1000+ 份有效样本，采用有序 Logit 和多项 Logit 模型分析居民保险参与意愿的影响因素。"
+          },
+          {
+            "kind": "text",
+            "text": "模块四（应急资源调度）：构建‘县-市-省’三级两阶段动态调度模型，使用改进遗传算法和粒子群算法求解，以江西省 2024 年洪涝为实例验证。"
+          }
+        ]
+      },
+      {
+        "heading": "个人收获",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "这是我首次将 NLP 技术应用于实际社会问题研究。从网络数据爬取、文本清洗、特征工程到主题建模的完整流程，让我建立了面向非结构化数据的分析能力。更重要的是，语义分析的结论直接驱动了后续三个模块的研究方向，让我体会到数据分析不仅是技术工作，更是问题发现的起点。"
+          }
+        ]
+      }
+    ]
+  }
+}

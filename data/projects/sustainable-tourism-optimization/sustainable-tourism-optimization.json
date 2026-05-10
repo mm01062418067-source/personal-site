@@ -1,0 +1,369 @@
+{
+  "displayName": "可持续旅游多目标优化",
+  "zh": {
+    "metaDescription": "MCM/ICM 2025 · 可持续旅游动态多目标优化项目经历，展示微分方程、多目标约束、反馈机制、景点评分和英文建模写作能力。",
+    "sections": [
+      {
+        "heading": "论文下载",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "完整竞赛论文（23 页）可通过以下链接查看或下载。"
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/sustainable-tourism-optimization/MCM2025_2517365.pdf",
+            "label": "下载论文 PDF"
+          }
+        ]
+      },
+      {
+        "heading": "项目概览",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "",
+            "headers": [
+              "信息",
+              "内容"
+            ],
+            "rows": [
+              [
+                "项目",
+                "MCM/ICM 2025 · Team 2517365 · Problem B"
+              ],
+              [
+                "题目",
+                "动态多目标优化视角下的可持续旅游模型构建"
+              ],
+              [
+                "状态",
+                "参赛完成，不作为奖项展示"
+              ],
+              [
+                "项目类型",
+                "英文数学建模项目经历"
+              ],
+              [
+                "个人角色",
+                "核心建模负责人；辅助编程与论文写作"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "该英文建模项目以阿拉斯加 Juneau 的过度旅游问题为背景，构建兼顾旅游收入、环境质量、基础设施承载力和居民满意度的动态多目标优化模型，并通过税收—支出反馈机制分析可持续旅游管理策略。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/sustainable-tourism-optimization/framework.png",
+            "alt": "可持续旅游模型整体建模框架",
+            "caption": "图：项目整体建模框架，展示从动态多目标模型构建、多目的地适配、游客分流推荐到敏感性分析的完整流程。"
+          }
+        ]
+      },
+      {
+        "heading": "问题描述",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "Juneau 在邮轮旅游快速增长的同时面临环境退化、基础设施压力和居民满意度下降等问题。项目要求构建可持续旅游模型，明确优化目标与约束，设计额外收入的支出反馈方案，并将模型推广到其他存在过度旅游问题的目的地。"
+          }
+        ]
+      },
+      {
+        "heading": "建模方法与技术路线",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "核心建模模块",
+            "headers": [
+              "模块",
+              "方法",
+              "作用"
+            ],
+            "rows": [
+              [
+                "动态系统建模",
+                "微分方程系统",
+                "刻画游客数量、环境质量、基础设施健康度、居民满意度和旅游收入之间的动态关系"
+              ],
+              [
+                "多目标优化",
+                "收益最大化 + 环境与基础设施压力最小化",
+                "在经济收益、环境保护和居民福利之间建立约束平衡"
+              ],
+              [
+                "反馈机制",
+                "税收与可持续支出分配",
+                "将旅游收入的一部分投入环境保护、基础设施改善和社区项目"
+              ],
+              [
+                "多目的地适配",
+                "地理类型分类与参数调整",
+                "将目的地划分为环境敏感型、文化遗产型和城市休闲型"
+              ],
+              [
+                "游客分流推荐",
+                "景点评分公式 + 推荐优先级函数",
+                "提高小众景点曝光，缓解热门景点过载"
+              ],
+              [
+                "敏感性分析",
+                "单变量敏感性分析 + 全局敏感性分析",
+                "识别环境敏感系数和税率等关键参数"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "主要结果",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "结果摘要",
+            "headers": [
+              "方面",
+              "结果"
+            ],
+            "rows": [
+              [
+                "Juneau 案例",
+                "主动管理情景下，环境质量、基础设施健康度和居民满意度趋于稳定，旅游收入保持增长趋势"
+              ],
+              [
+                "支出建议",
+                "可持续支出分配为 50% 环境保护、30% 基础设施改善、20% 社区项目"
+              ],
+              [
+                "推广案例",
+                "以 Iceland 为环境敏感型目的地案例，调整环境敏感系数和基础设施参数"
+              ],
+              [
+                "推荐策略",
+                "通过小众景点评分与游客分流机制，降低热门景点压力"
+              ],
+              [
+                "英文写作",
+                "完成面向 Juneau Tourism Council 的 memorandum，形成政策建议表达"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/sustainable-tourism-optimization/scenario-comparison.png",
+            "alt": "基准情景与主动管理情景对比",
+            "caption": "图：基准情景与主动管理情景下游客数量、居民满意度、环境质量和基础设施健康度的变化对比。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/sustainable-tourism-optimization/recommendation-priority.png",
+            "alt": "景点推荐优先级三维空间图",
+            "caption": "图：景点推荐优先级三维空间图，用于展示游客兴趣匹配、景点评分和拥挤惩罚共同作用下的分流推荐机制。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/sustainable-tourism-optimization/tourist-heatmap.png",
+            "alt": "干预前后游客分布热力图",
+            "caption": "图：干预前后游客分布热力图，展示小众景点推荐机制对游客空间分布的调节作用。"
+          }
+        ]
+      },
+      {
+        "heading": "个人贡献",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "我负责该作品的全部核心建模工作，包括动态系统方程、多目标优化目标与约束、税收—支出反馈机制、景点评分模型、游客分流推荐模型和敏感性分析设计，并辅助英文论文写作、图表整理与结果解释。"
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  },
+  "en": {
+    "metaDescription": "MCM/ICM 2025 · Sustainable tourism dynamic multi-objective optimization project, demonstrating differential equations, multi-objective constraints, feedback mechanisms, attraction scoring, and English modeling writing.",
+    "sections": [
+      {
+        "heading": "Paper Download",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "The full competition paper (23 pages) is available for viewing or downloading."
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/sustainable-tourism-optimization/MCM2025_2517365.pdf",
+            "label": "Download Paper (PDF)"
+          }
+        ]
+      },
+      {
+        "heading": "Project Overview",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "",
+            "headers": [
+              "Item",
+              "Details"
+            ],
+            "rows": [
+              [
+                "Project",
+                "MCM/ICM 2025 · Team 2517365 · Problem B"
+              ],
+              [
+                "Title",
+                "Construction of Sustainable Tourism Model from the Perspective of Dynamic Multi-objective Optimization"
+              ],
+              [
+                "Status",
+                "Completed entry; not presented as an award"
+              ],
+              [
+                "Project Type",
+                "English mathematical modeling project experience"
+              ],
+              [
+                "Role",
+                "Lead modeler; assisted with programming and paper writing"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "This English modeling project uses overtourism in Juneau, Alaska as its context. It builds a dynamic multi-objective optimization model balancing tourism revenue, environmental quality, infrastructure capacity, and resident satisfaction, and analyzes sustainable management strategies through a tax-expenditure feedback mechanism."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/sustainable-tourism-optimization/framework.png",
+            "alt": "Overall modeling framework for sustainable tourism",
+            "caption": "Figure: Overall modeling framework, covering dynamic multi-objective modeling, multi-destination adaptation, tourist redistribution recommendation, and sensitivity analysis."
+          }
+        ]
+      },
+      {
+        "heading": "Problem Description",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "Juneau faces environmental degradation, infrastructure pressure, and declining resident satisfaction alongside rapid cruise-tourism growth. The task required constructing a sustainable tourism model, defining objectives and constraints, designing a feedback plan for additional revenue expenditure, and adapting the model to other overtourism destinations."
+          }
+        ]
+      },
+      {
+        "heading": "Modeling Methods & Technical Pipeline",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "Core Modeling Modules",
+            "headers": [
+              "Module",
+              "Method",
+              "Function"
+            ],
+            "rows": [
+              [
+                "Dynamic system modeling",
+                "Differential equation system",
+                "Captures interactions among tourist volume, environmental quality, infrastructure health, resident satisfaction, and tourism revenue"
+              ],
+              [
+                "Multi-objective optimization",
+                "Revenue maximization plus minimization of environmental and infrastructure pressure",
+                "Balances economic benefit, environmental protection, and resident welfare"
+              ],
+              [
+                "Feedback mechanism",
+                "Tax and sustainable expenditure allocation",
+                "Allocates part of tourism revenue to environmental protection, infrastructure improvement, and community projects"
+              ],
+              [
+                "Multi-destination adaptation",
+                "Geographical classification and parameter adjustment",
+                "Classifies destinations as environmentally sensitive, cultural heritage, or urban leisure sites"
+              ],
+              [
+                "Tourist redistribution",
+                "Attraction scoring and recommendation-priority function",
+                "Increases exposure for lesser-known attractions and reduces overload at popular sites"
+              ],
+              [
+                "Sensitivity analysis",
+                "Single-variable and global sensitivity analysis",
+                "Identifies key parameters such as environmental sensitivity and tax rate"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Key Results",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "Result Summary",
+            "headers": [
+              "Aspect",
+              "Result"
+            ],
+            "rows": [
+              [
+                "Juneau case",
+                "Under active management, environmental quality, infrastructure health, and resident satisfaction tended to stabilize while tourism revenue continued to grow"
+              ],
+              [
+                "Expenditure recommendation",
+                "Sustainable expenditure was allocated as 50% environmental protection, 30% infrastructure improvement, and 20% community projects"
+              ],
+              [
+                "Adaptation case",
+                "Iceland was modeled as an environmentally sensitive destination with adjusted environmental and infrastructure parameters"
+              ],
+              [
+                "Recommendation strategy",
+                "A scoring and tourist-redistribution mechanism was used to reduce pressure on popular attractions"
+              ],
+              [
+                "English communication",
+                "A memorandum to the Juneau Tourism Council was prepared with actionable policy recommendations"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/sustainable-tourism-optimization/scenario-comparison.png",
+            "alt": "Comparison between baseline and active management scenarios",
+            "caption": "Figure: Comparison of tourist volume, resident satisfaction, environmental quality, and infrastructure health under baseline and active management scenarios."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/sustainable-tourism-optimization/recommendation-priority.png",
+            "alt": "Recommendation priority in 3D space",
+            "caption": "Figure: Recommendation priority in 3D space, illustrating the redistribution mechanism driven by tourist-interest matching, attraction scoring, and crowding penalty."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/sustainable-tourism-optimization/tourist-heatmap.png",
+            "alt": "Tourist distribution heatmap before and after intervention",
+            "caption": "Figure: Tourist distribution heatmap before and after intervention, showing how the recommendation mechanism redistributes visitor flow."
+          }
+        ]
+      },
+      {
+        "heading": "Personal Contribution",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "I was responsible for all core modeling work, including the dynamic system equations, multi-objective objectives and constraints, tax-expenditure feedback mechanism, attraction scoring model, tourist-redistribution recommendation model, and sensitivity-analysis design. I also assisted with English paper writing, figure organization, and result interpretation."
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  }
+}

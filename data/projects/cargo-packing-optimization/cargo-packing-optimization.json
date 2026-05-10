@@ -1,0 +1,385 @@
+{
+  "displayName": "货物运输装箱优化",
+  "zh": {
+    "metaDescription": "DMC2601946 · 多约束货物运输装箱与多车型决策项目经历，展示三维装箱、层模板组合、Pareto 筛选、动态规划与剪枝搜索能力。",
+    "sections": [
+      {
+        "heading": "论文下载",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "完整竞赛论文（92 页）可通过以下链接查看或下载。"
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/cargo-packing-optimization/DMC2601946.pdf",
+            "label": "下载论文 PDF"
+          }
+        ]
+      },
+      {
+        "heading": "项目概览",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "",
+            "headers": [
+              "信息",
+              "内容"
+            ],
+            "rows": [
+              [
+                "项目",
+                "DMC2601946 · D 题"
+              ],
+              [
+                "题目",
+                "“箱”尽其用——多约束下货物运输装箱的分层组合优化与多车型决策"
+              ],
+              [
+                "状态",
+                "结果待公布"
+              ],
+              [
+                "项目类型",
+                "数学建模项目经历"
+              ],
+              [
+                "个人角色",
+                "核心建模负责人；辅助编程与论文写作"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "该项目围绕多场景、多目标货物运输装箱策略优化问题，综合考虑货物姿态限制、堆叠支撑关系、易碎件特殊承托要求、局部承压上限、顶部安全间隙、车型选择与跨车分配等实际运输约束，建立三维装箱优化与多车型组合决策模型。"
+          }
+        ]
+      },
+      {
+        "heading": "问题描述",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "题目要求在两种标准车型和五类货物条件下，分别求解单车型装箱方案与多车型组合运输方案。模型需要在全部货物可运输、货物不得重叠、姿态合法、支撑稳定、易碎件安全承托、局部承压不超限、顶部预留安全间隙等约束下，优化空间利用率、载重利用率、车辆数量和运输成本。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/cargo-packing-optimization/cargo-types.png",
+            "alt": "标准件、易碎件和定向件三类货物示意图",
+            "caption": "图：三类货物约束对象示意，包括标准件、易碎件和定向件，为后续姿态限制、支撑关系与易碎件封顶约束建模提供基础。"
+          }
+        ]
+      },
+      {
+        "heading": "建模方法与技术路线",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "针对四个问题，我们构建了一套多任务协同的数学模型体系，涵盖时序回归、行为转化预测、在线状态判别和分时段动态推荐四大模块。"
+          },
+          {
+            "kind": "table",
+            "caption": "核心建模模块",
+            "headers": [
+              "模块",
+              "方法",
+              "作用"
+            ],
+            "rows": [
+              [
+                "三维装箱约束建模",
+                "三维坐标系 + 姿态变量 + 空间位置变量",
+                "描述标准件、易碎件、定向件的合法姿态、空间占据和边界约束"
+              ],
+              [
+                "支撑与承压建模",
+                "支撑父节点集合、有效支撑域、接触面积分担",
+                "检验货物稳定性、易碎件完整承托和局部压强上限"
+              ],
+              [
+                "单车型求解",
+                "层模板构造—层序组合优化 + 网格搜索",
+                "将三维装箱拆解为二维铺排与一维堆叠，降低搜索复杂度"
+              ],
+              [
+                "多车型组合优化",
+                "车辆启用、车型选择、货物跨车分配",
+                "分别以总车辆数最少和总运输成本最低为目标求解运输方案"
+              ],
+              [
+                "模板库压缩",
+                "混合层模板枚举 + Pareto 非支配筛选",
+                "保留层高不增大且货物件数更优的候选模板，压缩搜索空间"
+              ],
+              [
+                "组合求解与验证",
+                "二维动态规划精确覆盖 + 高度剪枝、支撑闭合剪枝、分布剪枝",
+                "恢复最优模板组合，并逐车验证装载可行性"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "主要结果",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "求解结果摘要",
+            "headers": [
+              "问题",
+              "结果"
+            ],
+            "rows": [
+              [
+                "单独选用车型 1",
+                "需 18 辆车，空间利用率 96.5%，载重利用率 52.6%"
+              ],
+              [
+                "单独选用车型 2",
+                "需 8 辆车，空间利用率 96.3%，载重利用率 74.2%"
+              ],
+              [
+                "多车型组合优化",
+                "总车辆数最少与总成本最低两个目标下，最优方案均为 8 辆车型 2"
+              ],
+              [
+                "运输成本",
+                "总运输成本 5600 元，未使用车型 1"
+              ],
+              [
+                "承压校核",
+                "最大局部压强 319 kg/m²，低于 500 kg/m² 承压上限"
+              ],
+              [
+                "灵敏度分析",
+                "顶部安全间隙在 3 cm 附近模型较稳定；超过 10 cm 后装载性能显著下降"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/cargo-packing-optimization/vehicle2-packing.png",
+            "alt": "车型 2 最优装箱方案三维可视化",
+            "caption": "图：单独选用车型 2 的最优装配方案样例，空间利用率为 96.3%，载重利用率为 74.2%。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/cargo-packing-optimization/sensitivity.png",
+            "alt": "顶部安全间隙灵敏度分析结果",
+            "caption": "图：顶部安全间隙对空间利用率、载重利用率、装载高度和层数的影响，用于检验模型在安全裕度变化下的稳定性。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/cargo-packing-optimization/pressure-heatmap.png",
+            "alt": "局部承压热力图可行性验证",
+            "caption": "图：局部承压热力图验证装载方案的稳定性，最大局部压强低于题设承压上限。"
+          }
+        ]
+      },
+      {
+        "heading": "个人贡献",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "我负责该作品的全部核心建模工作，包括三维装箱约束体系设计、货物姿态集合定义、支撑关系与局部承压建模、层模板构造、混合层组合优化、Pareto 筛选逻辑、动态规划与剪枝求解思路设计，并辅助完成程序实现、结果可视化和论文写作。"
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  },
+  "en": {
+    "metaDescription": "DMC2601946 · Cargo packing and multi-vehicle decision-making project, demonstrating 3D packing, layer-template optimization, Pareto filtering, dynamic programming, and pruning search.",
+    "sections": [
+      {
+        "heading": "Paper Download",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "The full competition paper (92 pages) is available for viewing or downloading."
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/cargo-packing-optimization/DMC2601946.pdf",
+            "label": "Download Paper (PDF)"
+          }
+        ]
+      },
+      {
+        "heading": "Project Overview",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "",
+            "headers": [
+              "Item",
+              "Details"
+            ],
+            "rows": [
+              [
+                "Project",
+                "DMC2601946 · Problem D"
+              ],
+              [
+                "Title",
+                "Hierarchical Combinatorial Optimization and Multi-vehicle Decision-making for Cargo Packing under Multiple Constraints"
+              ],
+              [
+                "Status",
+                "Result pending"
+              ],
+              [
+                "Project Type",
+                "Mathematical modeling project experience"
+              ],
+              [
+                "Role",
+                "Lead modeler; assisted with programming and paper writing"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "This project addresses a multi-scenario and multi-objective cargo packing problem. It incorporates practical transportation constraints such as cargo orientation, stacking support, fragile-item support, local pressure limits, top safety clearance, vehicle-type selection, and cross-vehicle allocation."
+          }
+        ]
+      },
+      {
+        "heading": "Problem Description",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "The task required solving both single-vehicle packing and mixed-vehicle transportation planning under two standard vehicle types and five cargo categories. The model had to satisfy non-overlap, legal orientation, support stability, fragile-item protection, local pressure limits, top clearance, and complete transportation constraints while optimizing volume utilization, weight utilization, truck count, and transportation cost."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/cargo-packing-optimization/cargo-types.png",
+            "alt": "Illustration of standard, fragile, and orientation-constrained cargo types",
+            "caption": "Figure: Three cargo categories considered in the model, including standard items, fragile items, and orientation-constrained items. These categories define the basis for orientation, support, and top-layer constraints."
+          }
+        ]
+      },
+      {
+        "heading": "Modeling Methods & Technical Pipeline",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "We constructed a multi-task collaborative mathematical model system covering four modules: time-series regression, behavior conversion prediction, online status classification, and time-slot dynamic recommendation."
+          },
+          {
+            "kind": "table",
+            "caption": "Core Modeling Modules",
+            "headers": [
+              "Module",
+              "Method",
+              "Function"
+            ],
+            "rows": [
+              [
+                "3D packing constraints",
+                "3D coordinate system, orientation variables, and position variables",
+                "Describes legal orientations, occupied space, and boundary constraints for standard, fragile, and directional items"
+              ],
+              [
+                "Support and pressure model",
+                "Parent support sets, effective support regions, and contact-area load allocation",
+                "Checks stability, full support for fragile items, and local pressure limits"
+              ],
+              [
+                "Single-vehicle solution",
+                "Layer-template construction and layer-sequence optimization with grid search",
+                "Decomposes 3D packing into 2D layout and 1D stacking to reduce search complexity"
+              ],
+              [
+                "Multi-vehicle optimization",
+                "Vehicle activation, type selection, and cross-vehicle cargo allocation",
+                "Solves minimum-truck and minimum-cost transportation plans"
+              ],
+              [
+                "Template compression",
+                "Mixed-layer enumeration and Pareto non-dominated filtering",
+                "Keeps high-quality layer candidates and reduces the search space"
+              ],
+              [
+                "Optimization and verification",
+                "2D dynamic programming exact coverage plus height, support-closure, and distribution pruning",
+                "Recovers optimal layer combinations and verifies feasibility for each truck"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Key Results",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "Result Summary",
+            "headers": [
+              "Problem",
+              "Result"
+            ],
+            "rows": [
+              [
+                "Type-1 vehicle only",
+                "18 trucks required, with 96.5% volume utilization and 52.6% weight utilization"
+              ],
+              [
+                "Type-2 vehicle only",
+                "8 trucks required, with 96.3% volume utilization and 74.2% weight utilization"
+              ],
+              [
+                "Mixed-vehicle optimization",
+                "Both minimum-truck and minimum-cost objectives selected 8 type-2 vehicles"
+              ],
+              [
+                "Transportation cost",
+                "Total cost was 5600 RMB, with no type-1 vehicle used"
+              ],
+              [
+                "Pressure validation",
+                "Maximum local pressure was 319 kg/m², below the 500 kg/m² limit"
+              ],
+              [
+                "Sensitivity analysis",
+                "The model was stable near the 3 cm top-clearance baseline; performance declined significantly beyond 10 cm"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/cargo-packing-optimization/vehicle2-packing.png",
+            "alt": "3D visualization of the optimal packing plan for vehicle type 2",
+            "caption": "Figure: Optimal packing example for vehicle type 2, with 96.3% volume utilization and 74.2% weight utilization."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/cargo-packing-optimization/sensitivity.png",
+            "alt": "Sensitivity analysis of top safety clearance",
+            "caption": "Figure: Sensitivity analysis of top safety clearance, showing its influence on volume utilization, weight utilization, loaded height, and number of layers."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/cargo-packing-optimization/pressure-heatmap.png",
+            "alt": "Local pressure heatmap for feasibility verification",
+            "caption": "Figure: Local pressure heatmap used to verify packing feasibility and structural stability under the pressure limit."
+          }
+        ]
+      },
+      {
+        "heading": "Personal Contribution",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "I was responsible for all core modeling work, including the 3D packing constraint system, orientation-set definition, support and local pressure modeling, layer-template construction, mixed-layer combinatorial optimization, Pareto filtering logic, and the dynamic-programming and pruning-based solution framework. I also assisted with implementation, visualization, and paper writing."
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "displayName": "跨物种光谱迁移检测 · SCI 一作（一审中）",
+  "zh": {
+    "metaDescription": "省级大创项目，以第一作者投稿SCI二区期刊。研究跨物种叶面滞尘的UV-Vis-NIR光谱迁移检测，发现分类与回归任务需要对立的光谱策略。",
+    "sections": [
+      {
+        "heading": "项目概览",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "本项目来源于省级大学生创新创业训练项目《手持式植物叶片重金属光谱检测仪的研发》（已结项）。我担任项目负责人，围绕城市植被叶面滞尘的无损评估需求，提出了一套基于 UV–Vis–NIR 漫反射光谱的跨物种迁移检测框架。"
+          },
+          {
+            "kind": "text",
+            "text": "研究以金叶女贞为源域物种、红叶石楠为外部目标物种，系统评估了光谱框架在物种变化后的迁移行为。核心发现是：分类任务和回归任务在跨物种迁移中需要采用对立的光谱策略——这是首次在同一源-目标框架下同时验证两个任务并发现它们存在策略矛盾。该成果以第一作者撰写论文投稿至 SCI 二区期刊 Microchemical Journal，目前处于一审阶段。"
+          },
+          {
+            "kind": "text",
+            "text": "我独立完成了从研究问题提出、实验设计、样本采集（225 个样本）、光谱数据处理、Python 建模、数据分析到英文论文撰写与投稿的全部工作。"
+          }
+        ]
+      },
+      {
+        "heading": "核心创新：任务依赖的光谱策略",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "传统的校准迁移研究主要处理仪器差异、批次差异或产品形态差异，但没有系统研究过当生物基质（植物物种）发生变化时，光谱分析框架的迁移行为。本研究将跨物种迁移定义为一种'生物介导的域偏移'——两个物种在相同城市环境下，因叶表粗糙度、蜡质层、叶片大小等性状差异，即使滞尘量相近，也可能产生不同的光学响应。"
+          },
+          {
+            "kind": "text",
+            "text": "在此框架下，我发现了一个关键矛盾：分类迁移（区分公园/街道/化工园样本）需要裁剪掉不稳定的水吸收波段和噪声端，去除干扰后分类准确率达到 91.1%；而定量迁移（预测滞尘量数值）反而需要保留全谱信息，因为被裁剪掉的波段虽然对分类有害，却包含了连续响应关系所需的分布式信息。"
+          },
+          {
+            "kind": "text",
+            "text": "这意味着：不能对一个光谱框架做一次波长优化就假设它能同时服务所有迁移任务。分类需要迁移稳定的可分性，回归需要保留连续响应关系并配合校准尺度重对齐。这一发现对光谱分析领域的迁移方法设计具有方法论意义。"
+          }
+        ]
+      },
+      {
+        "heading": "研究设计",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "整个研究沿两条平行线展开：分区导向线（Zoning line）验证跨物种分类迁移，定量导向线（Quantitative line）验证跨物种回归迁移。两条线共享同一源域验证基础，但最终得出了相反的光谱策略结论。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/spectral-transfer/workflow.png",
+            "alt": "研究整体流程图",
+            "caption": "图：研究整体流程——源域验证与跨物种迁移的双线框架（分区线 + 定量线）"
+          }
+        ]
+      },
+      {
+        "heading": "我的完整工作链",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "从问题提出到投稿的全流程",
+            "headers": ["环节", "具体工作"],
+            "rows": [
+              ["研究设计", "提出跨物种迁移检测的研究问题，设计源域-外部目标物种的双物种实验框架"],
+              ["样本采集", "在南京市公园、街道、化工园三类功能区采集金叶女贞 180 个 + 红叶石楠 45 个样本"],
+              ["光谱采集", "使用 PerkinElmer Lambda 950 光谱仪采集 248–2500 nm 漫反射光谱（564 个波长变量）"],
+              ["滞尘量测定", "单面冲洗-真空抽滤-重量法定量，ImageJ 提取叶面积，计算面积归一化滞尘量"],
+              ["数据建模", "Python 实现 8 种预处理 × 5 种回归算法的系统筛选（RepeatedKFold 交叉验证）"],
+              ["迁移评估", "设计 5 种波段裁剪方案评估分类迁移，全谱 vs 裁剪对比评估定量迁移"],
+              ["校正方法", "提出基于 15 个桥接样本的斜率-偏置校正，50 次重复分层重采样验证稳定性"],
+              ["论文写作", "独立完成 SCI 英文论文撰写、全部图表制作、期刊投稿与审稿响应"]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "光谱证据：源域结构与跨物种偏移",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "下图展示了源域内三类功能区的光谱差异（上排）以及源域与外部物种之间的光谱偏移（下排）。不同预处理策略下，跨物种的光谱偏移模式各不相同，这直接导致了分类和回归在迁移时的不同表现。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/spectral-transfer/spectra.png",
+            "alt": "光谱证据图",
+            "caption": "图：源域光谱异质性（a–c）与源域-外部物种光谱偏移（d–f），灰色区域为分类迁移中裁剪的波段"
+          }
+        ]
+      },
+      {
+        "heading": "关键结果",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "核心结果汇总",
+            "headers": ["指标", "结果"],
+            "rows": [
+              ["源域最优回归组合", "MSC+1st × GBR，CV R² = 0.893"],
+              ["跨物种分类迁移", "裁剪波段后准确率 91.1%（全谱仅 poor–moderate）"],
+              ["跨物种定量迁移（直接）", "全谱 R² = 0.265，Spearman ρ = 0.812（保序但尺度偏移）"],
+              ["校正后定量迁移", "15 个桥接样本校正后 R² = 0.797 ± 0.042，Bias ≈ 0"],
+              ["核心发现", "分类偏好裁剪波段，回归偏好全谱——两个任务需要对立的光谱策略"]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/spectral-transfer/correction.png",
+            "alt": "校正前后散点图对比",
+            "caption": "图：跨物种定量迁移校正前后对比。(a) 直接迁移基线 R²=0.265；(b) 斜率-偏置校正后 R²=0.797"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：预处理×模型系统筛选",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "以下是我编写的源域模型筛选核心代码。通过 8 种光谱预处理 × 5 种回归算法的全组合交叉验证，系统评估 40 种方案的 R²、RMSE、MAE，最终确定 MSC+1st × GBR 为最优组合。"
+          },
+          {
+            "kind": "code",
+            "caption": "预处理×模型系统筛选（Python）— 点击展开",
+            "code": "# 8种光谱预处理策略\npp_methods = [\n    \"raw\", \"snv\", \"msc\", \"sg_smooth\",\n    \"sg_1st\", \"sg_2nd\", \"snv_1st\", \"msc_1st\"\n]\n\n# 5种回归算法（固定超参数）\nmodels = {\n    \"Ridge\": Ridge(alpha=10.0),\n    \"PLS\":   PLSWrapper(n_components=8),\n    \"SVR\":   SVR(C=10, gamma=\"scale\", epsilon=0.1),\n    \"RF\":    RandomForestRegressor(n_estimators=200, max_depth=6),\n    \"GBR\":   GradientBoostingRegressor(n_estimators=200, lr=0.05, max_depth=4),\n}\n\n# RepeatedKFold 交叉验证（5折×3次重复）\ncv = RepeatedKFold(n_splits=5, n_repeats=3, random_state=42)\n\nfor pp in pp_methods:\n    for name, model in models.items():\n        # 构建 Pipeline：预处理 → 标准化 → 回归\n        pipe = Pipeline([\n            (\"prep\",   SpectralPreprocessor(method=pp)),\n            (\"scaler\", StandardScaler()),\n            (\"model\",  model),\n        ])\n        # 交叉验证评估 R², RMSE, MAE\n        cv_res = cross_validate(\n            pipe, X, y, cv=cv,\n            scoring={\"r2\": \"r2\",\n                     \"rmse\": \"neg_root_mean_squared_error\",\n                     \"mae\": \"neg_mean_absolute_error\"},\n            n_jobs=-1\n        )\n        # 记录结果用于后续排名\n        results.append({\n            \"preprocessing\": pp,\n            \"model\": name,\n            \"cv_r2_mean\":   np.mean(cv_res[\"test_r2\"]),\n            \"cv_rmse_mean\": -np.mean(cv_res[\"test_rmse\"]),\n        })\n\n# 按 R² 排序，确定最优组合\nresults.sort(key=lambda r: r[\"cv_r2_mean\"], reverse=True)\n# → Top 1: MSC+1st × GBR, CV R² = 0.893"
+          }
+        ]
+      },
+      {
+        "heading": "论文信息",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "本研究以第一作者撰写论文投稿至 SCI 二区期刊 Microchemical Journal，目前处于一审阶段。论文尚未正式发表，暂不提供全文下载。"
+          },
+          {
+            "kind": "text",
+            "text": "论文标题：Cross-species transfer of foliar dust retention by UV–Vis–NIR spectroscopy: classification and quantitative evaluation\n\n作者贡献（CRediT）：Ziyi Huang — Conceptualization, Methodology, Investigation, Formal analysis, Software, Visualization, Writing – original draft"
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "metaDescription": "Provincial innovation project with first-author SCI submission. Cross-species UV-Vis-NIR spectroscopic transfer for foliar dust retention assessment.",
+    "sections": [
+      {
+        "heading": "项目概览",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "本项目来源于省级大学生创新创业训练项目《手持式植物叶片重金属光谱检测仪的研发》（已结项）。我担任项目负责人，围绕城市植被叶面滞尘的无损评估需求，提出了一套基于 UV–Vis–NIR 漫反射光谱的跨物种迁移检测框架。"
+          },
+          {
+            "kind": "text",
+            "text": "研究以金叶女贞为源域物种、红叶石楠为外部目标物种，系统评估了光谱框架在物种变化后的迁移行为。核心发现是：分类任务和回归任务在跨物种迁移中需要采用对立的光谱策略——这是首次在同一源-目标框架下同时验证两个任务并发现它们存在策略矛盾。该成果以第一作者撰写论文投稿至 SCI 二区期刊 Microchemical Journal，目前处于一审阶段。"
+          },
+          {
+            "kind": "text",
+            "text": "我独立完成了从研究问题提出、实验设计、样本采集（225 个样本）、光谱数据处理、Python 建模、数据分析到英文论文撰写与投稿的全部工作。"
+          }
+        ]
+      },
+      {
+        "heading": "核心创新：任务依赖的光谱策略",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "传统的校准迁移研究主要处理仪器差异、批次差异或产品形态差异，但没有系统研究过当生物基质（植物物种）发生变化时，光谱分析框架的迁移行为。本研究将跨物种迁移定义为一种'生物介导的域偏移'——两个物种在相同城市环境下，因叶表粗糙度、蜡质层、叶片大小等性状差异，即使滞尘量相近，也可能产生不同的光学响应。"
+          },
+          {
+            "kind": "text",
+            "text": "在此框架下，我发现了一个关键矛盾：分类迁移（区分公园/街道/化工园样本）需要裁剪掉不稳定的水吸收波段和噪声端，去除干扰后分类准确率达到 91.1%；而定量迁移（预测滞尘量数值）反而需要保留全谱信息，因为被裁剪掉的波段虽然对分类有害，却包含了连续响应关系所需的分布式信息。"
+          },
+          {
+            "kind": "text",
+            "text": "这意味着：不能对一个光谱框架做一次波长优化就假设它能同时服务所有迁移任务。分类需要迁移稳定的可分性，回归需要保留连续响应关系并配合校准尺度重对齐。这一发现对光谱分析领域的迁移方法设计具有方法论意义。"
+          }
+        ]
+      },
+      {
+        "heading": "研究设计",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "整个研究沿两条平行线展开：分区导向线（Zoning line）验证跨物种分类迁移，定量导向线（Quantitative line）验证跨物种回归迁移。两条线共享同一源域验证基础，但最终得出了相反的光谱策略结论。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/spectral-transfer/workflow.png",
+            "alt": "研究整体流程图",
+            "caption": "图：研究整体流程——源域验证与跨物种迁移的双线框架（分区线 + 定量线）"
+          }
+        ]
+      },
+      {
+        "heading": "我的完整工作链",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "从问题提出到投稿的全流程",
+            "headers": ["环节", "具体工作"],
+            "rows": [
+              ["研究设计", "提出跨物种迁移检测的研究问题，设计源域-外部目标物种的双物种实验框架"],
+              ["样本采集", "在南京市公园、街道、化工园三类功能区采集金叶女贞 180 个 + 红叶石楠 45 个样本"],
+              ["光谱采集", "使用 PerkinElmer Lambda 950 光谱仪采集 248–2500 nm 漫反射光谱（564 个波长变量）"],
+              ["滞尘量测定", "单面冲洗-真空抽滤-重量法定量，ImageJ 提取叶面积，计算面积归一化滞尘量"],
+              ["数据建模", "Python 实现 8 种预处理 × 5 种回归算法的系统筛选（RepeatedKFold 交叉验证）"],
+              ["迁移评估", "设计 5 种波段裁剪方案评估分类迁移，全谱 vs 裁剪对比评估定量迁移"],
+              ["校正方法", "提出基于 15 个桥接样本的斜率-偏置校正，50 次重复分层重采样验证稳定性"],
+              ["论文写作", "独立完成 SCI 英文论文撰写、全部图表制作、期刊投稿与审稿响应"]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "光谱证据：源域结构与跨物种偏移",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "下图展示了源域内三类功能区的光谱差异（上排）以及源域与外部物种之间的光谱偏移（下排）。不同预处理策略下，跨物种的光谱偏移模式各不相同，这直接导致了分类和回归在迁移时的不同表现。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/spectral-transfer/spectra.png",
+            "alt": "光谱证据图",
+            "caption": "图：源域光谱异质性（a–c）与源域-外部物种光谱偏移（d–f），灰色区域为分类迁移中裁剪的波段"
+          }
+        ]
+      },
+      {
+        "heading": "关键结果",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "核心结果汇总",
+            "headers": ["指标", "结果"],
+            "rows": [
+              ["源域最优回归组合", "MSC+1st × GBR，CV R² = 0.893"],
+              ["跨物种分类迁移", "裁剪波段后准确率 91.1%（全谱仅 poor–moderate）"],
+              ["跨物种定量迁移（直接）", "全谱 R² = 0.265，Spearman ρ = 0.812（保序但尺度偏移）"],
+              ["校正后定量迁移", "15 个桥接样本校正后 R² = 0.797 ± 0.042，Bias ≈ 0"],
+              ["核心发现", "分类偏好裁剪波段，回归偏好全谱——两个任务需要对立的光谱策略"]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/spectral-transfer/correction.png",
+            "alt": "校正前后散点图对比",
+            "caption": "图：跨物种定量迁移校正前后对比。(a) 直接迁移基线 R²=0.265；(b) 斜率-偏置校正后 R²=0.797"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：预处理×模型系统筛选",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "以下是我编写的源域模型筛选核心代码。通过 8 种光谱预处理 × 5 种回归算法的全组合交叉验证，系统评估 40 种方案的 R²、RMSE、MAE，最终确定 MSC+1st × GBR 为最优组合。"
+          },
+          {
+            "kind": "code",
+            "caption": "预处理×模型系统筛选（Python）— 点击展开",
+            "code": "# 8种光谱预处理策略\npp_methods = [\n    \"raw\", \"snv\", \"msc\", \"sg_smooth\",\n    \"sg_1st\", \"sg_2nd\", \"snv_1st\", \"msc_1st\"\n]\n\n# 5种回归算法（固定超参数）\nmodels = {\n    \"Ridge\": Ridge(alpha=10.0),\n    \"PLS\":   PLSWrapper(n_components=8),\n    \"SVR\":   SVR(C=10, gamma=\"scale\", epsilon=0.1),\n    \"RF\":    RandomForestRegressor(n_estimators=200, max_depth=6),\n    \"GBR\":   GradientBoostingRegressor(n_estimators=200, lr=0.05, max_depth=4),\n}\n\n# RepeatedKFold 交叉验证（5折×3次重复）\ncv = RepeatedKFold(n_splits=5, n_repeats=3, random_state=42)\n\nfor pp in pp_methods:\n    for name, model in models.items():\n        # 构建 Pipeline：预处理 → 标准化 → 回归\n        pipe = Pipeline([\n            (\"prep\",   SpectralPreprocessor(method=pp)),\n            (\"scaler\", StandardScaler()),\n            (\"model\",  model),\n        ])\n        # 交叉验证评估 R², RMSE, MAE\n        cv_res = cross_validate(\n            pipe, X, y, cv=cv,\n            scoring={\"r2\": \"r2\",\n                     \"rmse\": \"neg_root_mean_squared_error\",\n                     \"mae\": \"neg_mean_absolute_error\"},\n            n_jobs=-1\n        )\n        # 记录结果用于后续排名\n        results.append({\n            \"preprocessing\": pp,\n            \"model\": name,\n            \"cv_r2_mean\":   np.mean(cv_res[\"test_r2\"]),\n            \"cv_rmse_mean\": -np.mean(cv_res[\"test_rmse\"]),\n        })\n\n# 按 R² 排序，确定最优组合\nresults.sort(key=lambda r: r[\"cv_r2_mean\"], reverse=True)\n# → Top 1: MSC+1st × GBR, CV R² = 0.893"
+          }
+        ]
+      },
+      {
+        "heading": "论文信息",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "本研究以第一作者撰写论文投稿至 SCI 二区期刊 Microchemical Journal，目前处于一审阶段。论文尚未正式发表，暂不提供全文下载。"
+          },
+          {
+            "kind": "text",
+            "text": "论文标题：Cross-species transfer of foliar dust retention by UV–Vis–NIR spectroscopy: classification and quantitative evaluation\n\n作者贡献（CRediT）：Ziyi Huang — Conceptualization, Methodology, Investigation, Formal analysis, Software, Visualization, Writing – original draft"
+          }
+        ]
+      }
+    ]
+  }
+}

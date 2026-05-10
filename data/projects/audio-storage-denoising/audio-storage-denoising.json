@@ -1,0 +1,367 @@
+{
+  "displayName": "音频存储优化与降噪",
+  "zh": {
+    "metaDescription": "CMC25004173 · 数字音频存储优化与降噪项目经历，展示 AHP 综合评价、随机森林分类、自适应编码和时频降噪建模能力。",
+    "sections": [
+      {
+        "heading": "论文下载",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "完整竞赛论文（45 页）可通过以下链接查看或下载。"
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/audio-storage-denoising/CMC25004173.pdf",
+            "label": "下载论文 PDF"
+          }
+        ]
+      },
+      {
+        "heading": "项目概览",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "",
+            "headers": [
+              "信息",
+              "内容"
+            ],
+            "rows": [
+              [
+                "项目",
+                "CMC25004173 · C 题"
+              ],
+              [
+                "题目",
+                "基于多维度评价与自适应策略的数字音频存储优化及降噪协同模型研究"
+              ],
+              [
+                "状态",
+                "参赛完成，不作为奖项展示"
+              ],
+              [
+                "项目类型",
+                "数学建模项目经历"
+              ],
+              [
+                "个人角色",
+                "核心建模负责人；辅助编程与论文写作"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "该项目针对数字音频处理中的存储优化与降噪问题，建立综合评价、参数推荐、自适应编码和分级降噪模型，尝试在音频存储效率、音质保真度和降噪性能之间进行协同优化。"
+          }
+        ]
+      },
+      {
+        "heading": "问题描述",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "题目围绕音频格式选择、编码参数推荐、自适应编码和带噪音频去噪展开。模型需要综合考虑文件大小、音质损失、编解码复杂度、语音/音乐场景差异和不同噪声类型的时频特征。"
+          }
+        ]
+      },
+      {
+        "heading": "建模方法与技术路线",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "核心建模模块",
+            "headers": [
+              "模块",
+              "方法",
+              "作用"
+            ],
+            "rows": [
+              [
+                "音频格式综合评价",
+                "AHP 层次分析法 + 多指标归一化加权",
+                "构建存储效率、音质保真度、编解码复杂度的评价体系"
+              ],
+              [
+                "参数影响分析",
+                "文件大小模型 + 音质量化模型",
+                "分析采样率、比特深度、比特率和编码格式对文件体积与音质的影响"
+              ],
+              [
+                "性价比指标设计",
+                "动态权重函数",
+                "区分语音与音乐场景，给出差异化参数推荐"
+              ],
+              [
+                "自适应编码",
+                "随机森林分类 + 特征驱动参数优化",
+                "根据音频类型、频谱质心、动态范围和高频能量占比匹配编码参数"
+              ],
+              [
+                "分级去噪",
+                "STFT 噪声检测 + 谱减法 + 中值滤波 + 自适应带阻滤波",
+                "分别处理背景噪声、突发噪声和窄带噪声"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/audio-storage-denoising/compression-quality.png",
+            "alt": "不同音频格式压缩质量曲线比较",
+            "caption": "图：不同音频格式的压缩质量曲线比较，用于分析 AAC、MP3 与 WAV 在不同码率和音频类型下的质量—存储权衡。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/audio-storage-denoising/cost-performance.png",
+            "alt": "音频质量与文件大小性价比分析",
+            "caption": "图：音频质量与文件大小的性价比分析，用于比较语音和音乐场景下不同编码参数的综合表现。"
+          }
+        ]
+      },
+      {
+        "heading": "主要结果",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "结果摘要",
+            "headers": [
+              "问题",
+              "结果"
+            ],
+            "rows": [
+              [
+                "格式评价",
+                "AHP 权重为存储效率 64.8%、音质保真度 13.2%、编解码复杂度 23.0%"
+              ],
+              [
+                "语音编码",
+                "96 kbps AAC 语音质量约 0.78，存储效率较 MP3 提升 33%"
+              ],
+              [
+                "音乐编码",
+                "音乐类文件以 256 kbps AAC 表现较优，音乐通常需 ≥192 kbps 以避免明显失真"
+              ],
+              [
+                "参数推荐",
+                "语音场景推荐 16 kHz/32 kbps AAC；音乐场景推荐 48 kHz/24 bit WAV 或高码率 AAC"
+              ],
+              [
+                "自适应编码",
+                "随机森林分类用于动态匹配音频类型与参数；语音场景文件体积降低 94.4%"
+              ],
+              [
+                "去噪效果",
+                "谱减法、中值滤波和带阻滤波联合后，样本信噪比平均提升约 6.2 dB"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/audio-storage-denoising/adaptive-comparison.png",
+            "alt": "自适应编码方案与固定参数方案对比",
+            "caption": "图：自适应编码方案与固定参数方案在文件大小、音质评分、性价比和信噪比等指标上的对比。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/audio-storage-denoising/denoising-spectrum.png",
+            "alt": "去噪前后时频谱对比图",
+            "caption": "图：去噪处理前后的波形与频谱对比，用于展示分级去噪策略对不同噪声类型的抑制效果。"
+          }
+        ]
+      },
+      {
+        "heading": "个人贡献",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "我负责该作品的全部核心建模工作，包括音频格式综合评价指标体系、文件大小与音质性价比模型、语音/音乐差异化参数推荐、自适应编码策略和分级降噪模型设计，并辅助完成代码实现、图表生成和论文写作。"
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  },
+  "en": {
+    "metaDescription": "CMC25004173 · Digital audio storage optimization and denoising project, demonstrating AHP evaluation, random forest classification, adaptive encoding, and time-frequency denoising models.",
+    "sections": [
+      {
+        "heading": "Paper Download",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "The full competition paper (45 pages) is available for viewing or downloading."
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/audio-storage-denoising/CMC25004173.pdf",
+            "label": "Download Paper (PDF)"
+          }
+        ]
+      },
+      {
+        "heading": "Project Overview",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "",
+            "headers": [
+              "Item",
+              "Details"
+            ],
+            "rows": [
+              [
+                "Project",
+                "CMC25004173 · Problem C"
+              ],
+              [
+                "Title",
+                "Digital Audio Storage Optimization and Denoising Collaborative Model Based on Multi-dimensional Evaluation and Adaptive Strategies"
+              ],
+              [
+                "Status",
+                "Completed entry; not presented as an award"
+              ],
+              [
+                "Project Type",
+                "Mathematical modeling project experience"
+              ],
+              [
+                "Role",
+                "Lead modeler; assisted with programming and paper writing"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "This project focuses on digital audio storage optimization and noise reduction. It builds an integrated framework for comprehensive evaluation, parameter recommendation, adaptive encoding, and hierarchical denoising."
+          }
+        ]
+      },
+      {
+        "heading": "Problem Description",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "The task concerns audio-format selection, encoding-parameter recommendation, adaptive encoding, and denoising of noisy audio samples. The model considers file size, fidelity loss, codec complexity, speech/music differences, and time-frequency characteristics of different noise types."
+          }
+        ]
+      },
+      {
+        "heading": "Modeling Methods & Technical Pipeline",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "Core Modeling Modules",
+            "headers": [
+              "Module",
+              "Method",
+              "Function"
+            ],
+            "rows": [
+              [
+                "Audio-format evaluation",
+                "AHP and normalized weighted evaluation",
+                "Builds an evaluation system covering storage efficiency, audio fidelity, and codec complexity"
+              ],
+              [
+                "Parameter analysis",
+                "File-size model and audio-quality model",
+                "Analyzes effects of sampling rate, bit depth, bitrate, and format on file size and quality"
+              ],
+              [
+                "Cost-performance metric",
+                "Dynamic weighting function",
+                "Provides differentiated recommendations for speech and music"
+              ],
+              [
+                "Adaptive encoding",
+                "Random forest classification plus feature-driven parameter optimization",
+                "Matches encoding parameters using audio type, spectral centroid, dynamic range, and high-frequency energy ratio"
+              ],
+              [
+                "Hierarchical denoising",
+                "STFT noise detection, spectral subtraction, median filtering, and adaptive notch filtering",
+                "Handles background noise, burst noise, and narrowband noise separately"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/audio-storage-denoising/compression-quality.png",
+            "alt": "Compression quality comparison across audio formats",
+            "caption": "Figure: Compression quality comparison across audio formats, used to analyze the quality-storage trade-off of AAC, MP3, and WAV under different bitrates and audio types."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/audio-storage-denoising/cost-performance.png",
+            "alt": "Cost-performance analysis of audio quality and file size",
+            "caption": "Figure: Cost-performance analysis of audio quality and file size, comparing encoding parameters under speech and music scenarios."
+          }
+        ]
+      },
+      {
+        "heading": "Key Results",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "Result Summary",
+            "headers": [
+              "Problem",
+              "Result"
+            ],
+            "rows": [
+              [
+                "Format evaluation",
+                "AHP weights were 64.8% for storage efficiency, 13.2% for fidelity, and 23.0% for codec complexity"
+              ],
+              [
+                "Speech encoding",
+                "96 kbps AAC achieved a speech quality score of about 0.78, with 33% higher storage efficiency than MP3"
+              ],
+              [
+                "Music encoding",
+                "256 kbps AAC performed well for music, while music generally required at least 192 kbps to avoid obvious distortion"
+              ],
+              [
+                "Parameter recommendation",
+                "Recommended 16 kHz/32 kbps AAC for speech and 48 kHz/24 bit WAV or high-bitrate AAC for music"
+              ],
+              [
+                "Adaptive encoding",
+                "Random forest classification was used to match audio type and encoding parameters; the speech scenario reduced file size by 94.4%"
+              ],
+              [
+                "Denoising effect",
+                "Combining spectral subtraction, median filtering, and notch filtering improved sample SNR by about 6.2 dB on average"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/audio-storage-denoising/adaptive-comparison.png",
+            "alt": "Comparison between adaptive encoding and fixed-parameter encoding",
+            "caption": "Figure: Comparison between adaptive encoding and fixed-parameter encoding in terms of file size, quality score, cost-performance ratio, and signal-to-noise ratio."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/audio-storage-denoising/denoising-spectrum.png",
+            "alt": "Time-frequency comparison before and after denoising",
+            "caption": "Figure: Waveform and spectrum comparison before and after denoising, showing the effect of hierarchical denoising strategies on different noise types."
+          }
+        ]
+      },
+      {
+        "heading": "Personal Contribution",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "I was responsible for all core modeling work, including the audio-format evaluation system, file-size and quality cost-performance model, speech/music-specific parameter recommendation, adaptive encoding strategy, and hierarchical denoising model. I also assisted with implementation, figure generation, and paper writing."
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "displayName": "五一数学建模竞赛",
+  "zh": {
+    "metaDescription": "第二十二届五一数学建模竞赛 C 题 · 省级二等奖 — 基于 XGBoost 回归与双通道推荐模型的社交媒体用户互动行为预测研究",
+    "sections": [
+      {
+        "heading": "获奖证书",
+        "blocks": [
+          {
+            "kind": "image",
+            "caption": "查看证书",
+            "src": "/api/projects/asset/social-media-behavior/certificate.jpg"
+          }
+        ]
+      },
+      {
+        "heading": "论文下载",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "完整竞赛论文（17 页）可通过以下链接查看或下载。"
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/social-media-behavior/paper.pdf",
+            "label": "下载论文 PDF"
+          }
+        ]
+      },
+      {
+        "heading": "问题描述",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "赛题要求基于某社交媒体平台 2024 年 7 月 11 日至 20 日的用户与博主互动数据，构建数学模型解决四个递进式预测问题：（1）预测各博主次日新增关注数并筛选 TOP5；（2）融合历史与实时数据预测用户新关注行为；（3）预测指定用户在线状态及最可能互动的 TOP3 博主；（4）细化至小时级，预测用户分时段在线行为及对应时段互动最多的博主。"
+          }
+        ]
+      },
+      {
+        "heading": "建模方法与技术路线",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "针对四个问题，我们构建了一套多任务协同的数学模型体系，涵盖时序回归、行为转化预测、在线状态判别和分时段动态推荐四大模块。"
+          },
+          {
+            "kind": "table",
+            "caption": "四个问题的建模策略",
+            "headers": [
+              "问题",
+              "核心方法",
+              "关键技术",
+              "主要结果"
+            ],
+            "rows": [
+              [
+                "问题一：博主新增关注数预测",
+                "XGBoost 回归",
+                "滑动窗口特征、移动平均、周期性特征（星期几效应）、正则化防过拟合",
+                "R² = 0.89，TOP5 博主中 B21 预测新增 500.4 关注"
+              ],
+              [
+                "问题二：用户新关注行为预测",
+                "双通道预测框架",
+                "个性化通道（逻辑回归建模转化规律）+ 热度通道（改进 SIR 模型量化传播力），融合地理匹配系数与时段修正因子",
+                "以用户 U7 为例，成功预测其新增关注 B23、B27、B7"
+              ],
+              [
+                "问题三：用户在线状态预测",
+                "线性加权融合模型",
+                "目标星期活跃次数（权重 0.4）、活跃天数（0.3）、近期活跃间隔（0.2）、活动总数（0.1），阈值 P≥0.5 判定在线",
+                "综合互动指数推荐 TOP3 博主"
+              ],
+              [
+                "问题四：分时段行为预测",
+                "分时段动态建模",
+                "小时级活跃频率统计 + 全局热度指标 + 个性化互动基数，引入衰减因子抑制马太效应",
+                "新晋博主曝光率提升 12%"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "关键图表与结果可视化",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "为更直观展示模型从特征构建到行为预测的完整流程，本节选取四类代表性结果图：XGBoost 特征重要性、TOP5 博主关注趋势、在线状态预测诊断图，以及小时级分时段推荐结果。这些图表分别对应新增关注预测、在线状态判别和分时段互动推荐等核心任务，展示了模型在特征解释性、时序预测和用户行为刻画方面的输出结果。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/social-media-behavior/feature-importance.png",
+            "alt": "XGBoost 模型特征重要性图",
+            "caption": "图：XGBoost 模型特征重要性。结果显示，历史关注滞后特征、滑动窗口统计量和互动行为特征对博主新增关注数预测贡献较高，为后续 TOP5 博主筛选提供了可解释依据。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/social-media-behavior/top5-trend.png",
+            "alt": "TOP5 博主关注趋势折线图",
+            "caption": "图：TOP5 博主关注趋势及预测结果。折线展示了高增长博主在历史时间窗口内的关注变化轨迹，并标记 2024-07-21 的预测点，用于支撑新增关注数排序与 TOP5 博主筛选结果。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/social-media-behavior/online-panel.png",
+            "alt": "用户在线状态预测诊断图",
+            "caption": "图：用户在线状态预测与互动热度诊断。该组图综合展示在线概率分布、预测互动热度最高的 TOP20 博主、不同概率阈值下的用户数量变化，以及用户活跃间隔与预测在线概率之间的关系，用于验证在线状态判别模型的合理性。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/social-media-behavior/time-slot-result.png",
+            "alt": "用户分时段互动推荐结果图",
+            "caption": "图：问题四分时段互动推荐结果。图中展示了指定用户在不同小时段的活跃分布、候选互动博主及热度矩阵，体现了模型从\"是否在线\"进一步细化到\"何时在线、与谁互动\"的小时级预测能力。"
+          }
+        ]
+      },
+      {
+        "heading": "个人贡献",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "我在团队中担任建模手，负责整体数学模型的构建与推导，包括 XGBoost 回归模型的特征工程设计、双通道预测框架的数学形式化、以及 SIR 传播模型的改进。同时负责问题二的编程实现，包括用户-博主互动强度矩阵的构建、时间衰减系数的计算、以及个性化通道与热度通道的融合预测。"
+          }
+        ]
+      },
+      {
+        "heading": "核心公式选摘",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "用户-博主互动强度矩阵通过时间衰减加权与行为类型加权构建。时间衰减系数 wₜ = 1/(1+αΔt)，其中 α=0.2 为衰减速率，Δt 为时间差（天）。行为权重向量 β = [0.2, 0.3, 0.3, 0.2] 分别对应观看、点赞、评论、关注。最终关注概率由个性化通道与热度通道加权融合，并叠加地理匹配修正项得到。"
+          }
+        ]
+      },
+      {
+        "heading": "模型评价与改进",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "XGBoost 在问题一中表现优异（R²=0.89），但对长期时序依赖捕捉不足；问题四的热度指标存在马太效应。改进方案包括：引入 LSTM 增强时序建模能力、优化玻尔兹曼分布温度参数实现自适应调节、以及通过对数衰减因子抑制头部博主的过度曝光，使新晋博主曝光率提升 12%。"
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  },
+  "en": {
+    "metaDescription": "22nd May Day Mathematical Modeling Contest Problem C · Provincial Second Prize — Social media user interaction behavior prediction based on XGBoost regression and dual-channel recommendation model",
+    "sections": [
+      {
+        "heading": "Award Certificate",
+        "blocks": [
+          {
+            "kind": "image",
+            "caption": "View Certificate",
+            "src": "/api/projects/asset/social-media-behavior/certificate.jpg"
+          }
+        ]
+      },
+      {
+        "heading": "Paper Download",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "The full competition paper (17 pages) is available for viewing or downloading."
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/social-media-behavior/paper.pdf",
+            "label": "Download Paper (PDF)"
+          }
+        ]
+      },
+      {
+        "heading": "Project Overview",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "",
+            "headers": [
+              "Item",
+              "Details"
+            ],
+            "rows": [
+              [
+                "Competition",
+                "22nd May Day Mathematical Modeling Contest (2025)"
+              ],
+              [
+                "Problem",
+                "Problem C · Social Media User Interaction Behavior Prediction"
+              ],
+              [
+                "Award",
+                "Provincial Second Prize"
+              ],
+              [
+                "Team",
+                "Rong Lucheng, Fu Xiangyu, Huang Ziyi"
+              ],
+              [
+                "Role",
+                "Mathematical Modeling & Problem 2 Programming"
+              ],
+              [
+                "Date",
+                "May 2025"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Problem Description",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "Based on user-blogger interaction data from a social media platform (July 11-20, 2024), the contest required building mathematical models to solve four progressive prediction problems: (1) predict next-day new follower counts for bloggers and identify TOP5; (2) predict user follow behavior by combining historical and real-time data; (3) predict specified users' online status and most likely TOP3 interacting bloggers; (4) predict hourly online behavior and corresponding top interacting bloggers."
+          }
+        ]
+      },
+      {
+        "heading": "Modeling Methods & Technical Pipeline",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "We constructed a multi-task collaborative mathematical model system covering four modules: time-series regression, behavior conversion prediction, online status classification, and time-slot dynamic recommendation."
+          },
+          {
+            "kind": "table",
+            "caption": "Modeling Strategies for Four Problems",
+            "headers": [
+              "Problem",
+              "Core Method",
+              "Key Techniques",
+              "Main Results"
+            ],
+            "rows": [
+              [
+                "Q1: Blogger follower prediction",
+                "XGBoost Regression",
+                "Sliding window features, moving average, periodicity features (day-of-week effect), regularization",
+                "R² = 0.89, TOP5 blogger B21 predicted 500.4 new followers"
+              ],
+              [
+                "Q2: User follow behavior prediction",
+                "Dual-channel framework",
+                "Personalized channel (logistic regression) + Popularity channel (modified SIR model), geographic matching & time-slot correction",
+                "Successfully predicted U7's new follows: B23, B27, B7"
+              ],
+              [
+                "Q3: User online status prediction",
+                "Linear weighted fusion",
+                "Target weekday activity (weight 0.4), active days (0.3), recent activity interval (0.2), total activities (0.1), threshold P≥0.5",
+                "TOP3 blogger recommendation via composite interaction index"
+              ],
+              [
+                "Q4: Hourly behavior prediction",
+                "Time-slot dynamic modeling",
+                "Hourly activity frequency + global popularity index + personalized interaction base, decay factor to suppress Matthew effect",
+                "12% increase in emerging blogger exposure"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Key Figures and Result Visualization",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "To illustrate the complete modeling pipeline from feature construction to behavioral prediction, this section presents four representative figures: XGBoost feature importance, TOP5 blogger follow-growth trends, online-status prediction diagnostics, and hourly time-slot recommendation results. These figures correspond to follower-growth prediction, online-status classification, and time-resolved interaction recommendation, showing the model outputs in terms of interpretability, temporal prediction, and user-behavior characterization."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/social-media-behavior/feature-importance.png",
+            "alt": "XGBoost feature importance",
+            "caption": "Figure: Feature importance of the XGBoost model. Historical follow-lag features, sliding-window statistics, and interaction features contributed substantially to predicting new follower counts, providing an interpretable basis for identifying TOP5 high-growth bloggers."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/social-media-behavior/top5-trend.png",
+            "alt": "TOP5 blogger follow-growth trend",
+            "caption": "Figure: Follow-growth trends and prediction results for the TOP5 bloggers. The curves show historical follow-count trajectories of high-growth bloggers and mark the predicted values for July 21, 2024, supporting the ranking and selection of TOP5 bloggers."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/social-media-behavior/online-panel.png",
+            "alt": "Online-status prediction diagnostic panel",
+            "caption": "Figure: Diagnostic results for online-status prediction and interaction popularity. The panel shows the online-probability distribution, TOP20 bloggers by predicted interaction popularity, user counts under different probability thresholds, and the relationship between recent activity intervals and predicted online probability, supporting the validity of the online-status classification model."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/social-media-behavior/time-slot-result.png",
+            "alt": "Hourly time-slot interaction recommendation results",
+            "caption": "Figure: Time-slot interaction recommendation results for Problem 4. The figure visualizes user activity distributions, candidate interacting bloggers, and heatmap-style interaction patterns across hourly intervals, demonstrating the model’s ability to move from online-status prediction to hourly “when-to-interact and whom-to-interact-with” recommendation."
+          }
+        ]
+      },
+      {
+        "heading": "Personal Contribution",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "I served as the mathematical modeler, responsible for constructing and deriving the overall mathematical models, including feature engineering design for XGBoost regression, mathematical formalization of the dual-channel prediction framework, and improvement of the SIR propagation model. I also implemented the programming for Problem 2, including user-blogger interaction matrix construction, temporal decay computation, and fusion prediction of personalized and popularity channels."
+          }
+        ]
+      },
+      {
+        "heading": "Key Formulations",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "The user-blogger interaction intensity matrix was constructed through temporal decay weighting and behavior type weighting. The decay coefficient wₜ = 1/(1+αΔt), where α=0.2 is the decay rate and Δt is the time difference in days. The behavior weight vector β = [0.2, 0.3, 0.3, 0.2] corresponds to view, like, comment, and follow respectively. The final follow probability was obtained by weighted fusion of personalized and popularity channels with geographic matching correction."
+          }
+        ]
+      },
+      {
+        "heading": "Model Evaluation & Improvements",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "XGBoost performed well in Q1 (R²=0.89) but had limited capacity for long-term temporal dependencies. The popularity metric in Q4 suffered from the Matthew effect. Improvements included: introducing LSTM for enhanced temporal modeling, optimizing Boltzmann distribution temperature parameters for adaptive adjustment, and applying logarithmic decay factors to suppress over-exposure of top bloggers, improving emerging blogger exposure by 12%."
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  }
+}

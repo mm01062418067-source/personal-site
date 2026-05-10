@@ -1,0 +1,385 @@
+{
+  "displayName": "月球物流与空间电梯评估",
+  "zh": {
+    "metaDescription": "AIM2026 · 月球物流与空间电梯系统评估项目经历，展示最小生成树、单位成本比较、常微分方程和稳定性分析等建模能力。",
+    "sections": [
+      {
+        "heading": "论文下载",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "完整竞赛论文（14 页）可通过以下链接查看或下载。"
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/lunar-logistics-space-elevator/MCM2026_2630979.pdf",
+            "label": "下载论文 PDF"
+          }
+        ]
+      },
+      {
+        "heading": "项目概览",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "",
+            "headers": [
+              "信息",
+              "内容"
+            ],
+            "rows": [
+              [
+                "项目",
+                "AIM2026 · 太原理工大学"
+              ],
+              [
+                "题目",
+                "月球物流与空间电梯系统评估"
+              ],
+              [
+                "状态",
+                "参赛完成，不作为奖项展示"
+              ],
+              [
+                "项目类型",
+                "数学建模项目经历"
+              ],
+              [
+                "个人角色",
+                "核心建模负责人；辅助编程与论文写作"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "该项目针对月球表面道路-管道混合网络建设和月球电梯系统两种方案的物流效率与成本展开分析，尝试比较在常态化运行场景下两种方案的经济性和适用性。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/lunar-logistics-space-elevator/workflow.png",
+            "alt": "月球物流与空间电梯方案评估工作流",
+            "caption": "图：项目工作流，展示方案比较、非理想工况调整、水资源运输计划和环境影响评估四个建模任务。"
+          }
+        ]
+      },
+      {
+        "heading": "问题描述",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "题目分为两部分：（1）在给定月球表面 15 个矿区和 10 个熔炼厂的坐标下，分别设计仅使用卡车的公路网络和管道运输方案，比较两种方案的管道总里程和单吨运输成本；（2）建立空间电梯高度与安全、材料成本的数学关系，分析月球电梯系统在不同运行高度下的绳索张力、断裂风险和成本效益。"
+          }
+        ]
+      },
+      {
+        "heading": "建模方法与技术路线",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "核心建模模块",
+            "headers": [
+              "模块",
+              "方法",
+              "作用"
+            ],
+            "rows": [
+              [
+                "公路网络",
+                "最小生成树 + A* 路径规划",
+                "在给定坐标下构建公路网络以最小化公路总里程"
+              ],
+              [
+                "卡车成本",
+                "单位成本比较 + 时间惩罚",
+                "计算单吨运输成本，反映月球重力环境和加油消耗的影响"
+              ],
+              [
+                "管道网络",
+                "最小生成树",
+                "设计管道运输路径，以总里程最小为目标"
+              ],
+              [
+                "空间电梯高度",
+                "牛顿第二定律 + 向心力公式 + 胡克定律",
+                "建立空间电梯绳索张力与高度的解析关系"
+              ],
+              [
+                "电梯安全",
+                "单位面积最大应力 + 泊松近似",
+                "计算最大允许高度和不同高度下的断裂概率"
+              ],
+              [
+                "成本效益",
+                "多材料比较 + 力学设计 + 安全性评估",
+                "比较钢、碳纳米管与镁铝材料在不同运行高度下的安全性和成本"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "主要结果",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "结果摘要",
+            "headers": [
+              "方面",
+              "结果"
+            ],
+            "rows": [
+              [
+                "公路网络",
+                "最小生成树在 15 个矿区到 10 个熔炼厂间构建运输公路，总里程约 4.15×10^4 km"
+              ],
+              [
+                "卡车成本",
+                "综合月球重力、运输距离与加油周期，每吨运输成本约 1.25×10^6 元/吨"
+              ],
+              [
+                "管道网络",
+                "管道最小生成树总里程约 3.05×10^4 km，低于公路方案"
+              ],
+              [
+                "管道 vs 公路",
+                "管道运输成本约为 1.17×10^6 元/吨，较公路方案降低 6.4%"
+              ],
+              [
+                "电梯模型",
+                "建立绳索最大张力的解析公式：T_max = 45×10^6 · m / (9.81 · π · r^2)"
+              ],
+              [
+                "安全高度",
+                "碳纳米管材料下安全操作高度上限约为 385 km"
+              ],
+              [
+                "材料比较",
+                "碳纳米管安全高度最大（385 km），但成本极高；镁铝合金安全高度最低，成本也最低"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/lunar-logistics-space-elevator/scenario-comparison.png",
+            "alt": "空间电梯、火箭与混合运输方案综合对比",
+            "caption": "图：三类地月物流方案的综合对比，展示运输能力演化、项目完成时间和总成本结构。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/lunar-logistics-space-elevator/monte-carlo.png",
+            "alt": "非理想工况下 Monte Carlo 仿真结果",
+            "caption": "图：Monte Carlo 仿真结果，比较空间电梯、火箭和混合方案在随机故障扰动下的完成时间与成本分布。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/lunar-logistics-space-elevator/environment-impact.png",
+            "alt": "地月物流方案环境影响评估结果",
+            "caption": "图：不同运输方案的生命周期环境影响与缓解策略效果，用于支撑空间电梯方案在环境约束下的优势。"
+          }
+        ]
+      },
+      {
+        "heading": "个人贡献",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "我负责该作品的全部核心建模工作，包括公路/管道最小生成树设计、卡车与管道运输成本模型、空间电梯高度—张力解析关系、材料安全高度计算、断裂概率分析和成本效益比较，并辅助完成代码实现和论文写作。"
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  },
+  "en": {
+    "metaDescription": "AIM2026 · Lunar logistics and space elevator system assessment project, demonstrating minimum spanning tree, unit cost comparison, ordinary differential equations, and stability analysis.",
+    "sections": [
+      {
+        "heading": "Paper Download",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "The full competition paper (14 pages) is available for viewing or downloading."
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/lunar-logistics-space-elevator/MCM2026_2630979.pdf",
+            "label": "Download Paper (PDF)"
+          }
+        ]
+      },
+      {
+        "heading": "Project Overview",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "",
+            "headers": [
+              "Item",
+              "Details"
+            ],
+            "rows": [
+              [
+                "Project",
+                "AIM2026 · Taiyuan University of Technology"
+              ],
+              [
+                "Title",
+                "Lunar Logistics and Space Elevator System Assessment"
+              ],
+              [
+                "Status",
+                "Completed entry; not presented as an award"
+              ],
+              [
+                "Project Type",
+                "Mathematical modeling project experience"
+              ],
+              [
+                "Role",
+                "Lead modeler; assisted with programming and paper writing"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "This project analyzes the logistics efficiency and cost of two schemes: a road-pipe hybrid network on the lunar surface and a lunar elevator system, comparing their economic performance and applicability under normal operating conditions."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/lunar-logistics-space-elevator/workflow.png",
+            "alt": "Workflow for lunar logistics and space elevator assessment",
+            "caption": "Figure: Project workflow covering scenario comparison, plan adjustment under non-ideal conditions, water transport planning, and environmental impact assessment."
+          }
+        ]
+      },
+      {
+        "heading": "Problem Description",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "The task has two parts: (1) given coordinates of 15 mining areas and 10 smelting plants on the Moon, design a road network using only trucks and a pipe transport plan, and compare total mileage and unit cost; (2) establish mathematical relationships between elevator height, safety, and material cost, and analyze tether tension, fracture risk, and cost-effectiveness at different operating heights."
+          }
+        ]
+      },
+      {
+        "heading": "Modeling Methods & Technical Pipeline",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "Core Modeling Modules",
+            "headers": [
+              "Module",
+              "Method",
+              "Function"
+            ],
+            "rows": [
+              [
+                "Road network",
+                "Minimum spanning tree + A* path planning",
+                "Builds a road network from given coordinates to minimize total mileage"
+              ],
+              [
+                "Truck cost",
+                "Unit cost comparison + time penalty",
+                "Computes unit transport cost considering lunar gravity and refueling cycles"
+              ],
+              [
+                "Pipe network",
+                "Minimum spanning tree",
+                "Designs pipe transport paths minimizing total mileage"
+              ],
+              [
+                "Space elevator height",
+                "Newton's second law + centripetal force + Hooke's law",
+                "Derives an analytical relationship between tether tension and height"
+              ],
+              [
+                "Elevator safety",
+                "Maximum stress per unit area + Poisson approximation",
+                "Computes maximum allowable height and fracture probability at different heights"
+              ],
+              [
+                "Cost-effectiveness",
+                "Multi-material comparison + mechanical design + safety assessment",
+                "Compares safety and cost of steel, carbon nanotubes, and magnesium-aluminum alloys at different operating heights"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Key Results",
+        "blocks": [
+          {
+            "kind": "table",
+            "caption": "Result Summary",
+            "headers": [
+              "Aspect",
+              "Result"
+            ],
+            "rows": [
+              [
+                "Road network",
+                "The minimum spanning tree connected 15 mining areas to 10 smelting plants with a total mileage of about 4.15×10^4 km"
+              ],
+              [
+                "Truck cost",
+                "Considering lunar gravity, transport distance, and refueling cycles, the truck unit cost was about 1.25×10^6 CNY/ton"
+              ],
+              [
+                "Pipe network",
+                "The pipe MST total mileage was about 3.05×10^4 km, lower than the road scheme"
+              ],
+              [
+                "Pipe vs road",
+                "Pipe transport cost was about 1.17×10^6 CNY/ton, 6.4% lower than the road scheme"
+              ],
+              [
+                "Elevator model",
+                "An analytical formula for maximum tether tension was derived: T_max = 45×10^6 · m / (9.81 · π · r^2)"
+              ],
+              [
+                "Safe height",
+                "The safe operating height with carbon nanotubes was about 385 km"
+              ],
+              [
+                "Material comparison",
+                "Carbon nanotubes had the greatest safe height (385 km) but the highest cost; magnesium-aluminum alloy had the lowest safe height and cost"
+              ]
+            ]
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/lunar-logistics-space-elevator/scenario-comparison.png",
+            "alt": "Comprehensive comparison of space elevator, rocket, and hybrid transport scenarios",
+            "caption": "Figure: Comprehensive comparison of cislunar logistics scenarios, including capacity evolution, project completion time, and total cost structure."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/lunar-logistics-space-elevator/monte-carlo.png",
+            "alt": "Monte Carlo simulation results under non-ideal operating conditions",
+            "caption": "Figure: Monte Carlo simulation results comparing completion-time and cost distributions of space elevator, rocket-only, and hybrid strategies under stochastic failures."
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/lunar-logistics-space-elevator/environment-impact.png",
+            "alt": "Environmental impact assessment of cislunar logistics scenarios",
+            "caption": "Figure: Life-cycle environmental impact and mitigation analysis, supporting the environmental advantage of the space-elevator strategy."
+          }
+        ]
+      },
+      {
+        "heading": "Personal Contribution",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "I was responsible for all core modeling work, including the road and pipe minimum-spanning-tree design, truck and pipe cost models, space elevator height-tension analytical relationship, material safe-height calculation, fracture probability analysis, and cost-effectiveness comparison. I also assisted with implementation and paper writing."
+          }
+        ]
+      }
+    ],
+    "footnotes": []
+  }
+}

@@ -1,0 +1,401 @@
+{
+  "displayName": "数模国赛 A 题 · 国家一等奖",
+  "zh": {
+    "metaDescription": "2025年高教社杯全国大学生数学建模竞赛A题，获国家一等奖。研究烟幕干扰弹投放策略优化问题，涉及运动学建模、几何遮蔽判定、模拟退火、遗传算法与量子遗传算法。",
+    "sections": [
+      {
+        "heading": "获奖证书",
+        "blocks": [
+          {
+            "kind": "image",
+            "caption": "查看证书",
+            "src": "/api/projects/asset/math-modeling-smoke/certificate.jpg"
+          }
+        ]
+      },
+      {
+        "heading": "论文与代码",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "完整竞赛论文（40 页，含 5 个问题的建模、求解与分析）可通过下方链接下载或在线预览。论文附录包含全部 MATLAB 源代码（solve1.m – solve5.m）。"
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/math-modeling-smoke/paper.pdf",
+            "label": "下载竞赛论文 PDF"
+          }
+        ]
+      },
+      {
+        "heading": "赛题概述",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "2025年高教社杯全国大学生数学建模竞赛 A 题《烟幕干扰弹的投放策略的分析与优化》。赛题围绕无人机投放烟幕干扰弹保护地面目标的场景，要求建立精确的物理模型并设计最优投放策略，使烟幕对来袭导弹的有效遮蔽时间最大化。"
+          },
+          {
+            "kind": "text",
+            "text": "题目包含五个递进式子问题：从给定参数下的遮蔽时长计算（确定性仿真），逐步升级到单弹优化（4 维）、多弹协同（8 维）、多机协同（12 维），直至最终的 5 架无人机对抗 3 枚导弹的全局优化（40 维）。我在队伍中主要负责数学建模与算法设计，同时参与编程实现和论文撰写。"
+          }
+        ]
+      },
+      {
+        "heading": "核心建模思路",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "整个模型框架分为两层：底层是描述导弹、无人机、烟幕云团运动状态的运动学模型，以及基于阴影投影的有效遮蔽几何判定模型；上层是基于底层仿真的优化模型，将投放策略参数作为决策变量，以有效遮蔽时长为目标函数进行全局寻优。"
+          },
+          {
+            "kind": "text",
+            "text": "遮蔽判定的关键创新在于将三维空间中的视线遮挡问题转化为二维阴影包含问题：将真目标圆柱体的上下底面圆周均匀取采样点，计算每个采样点到导弹视线与烟幕球心的最短距离，当所有采样点的视线均被烟幕球体截断时判定为有效遮蔽。同时区分了三种物理情形——云团阻挡视线、云团包裹导弹、导弹穿出云团。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/math-modeling-smoke/occlusion.png",
+            "alt": "烟幕云团遮蔽情况示意图",
+            "caption": "图：烟幕云团对真目标的遮蔽情况示意（导弹视线、云团投影与真目标投影的几何关系）"
+          }
+        ]
+      },
+      {
+        "heading": "算法设计：逐维度升级",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "随着问题维度的递增，我设计了四种层次递进的求解策略："
+          },
+          {
+            "kind": "table",
+            "caption": "各子问题的算法选择与求解结果",
+            "headers": [
+              "子问题",
+              "决策维度",
+              "求解算法",
+              "最优遮蔽时长"
+            ],
+            "rows": [
+              [
+                "问题一：给定参数计算",
+                "0（确定性）",
+                "分层搜索 + 二分法",
+                "1.3916 s"
+              ],
+              [
+                "问题二：单机单弹优化",
+                "4 维",
+                "模拟退火算法",
+                "4.5826 s"
+              ],
+              [
+                "问题三：单机三弹协同",
+                "8 维",
+                "遗传算法",
+                "7.5188 s"
+              ],
+              [
+                "问题四：三机各投一弹",
+                "12 维",
+                "混合自适应量子遗传算法",
+                "11.6673 s"
+              ],
+              [
+                "问题五：五机对抗三弹",
+                "40 维（拆分为 5×8）",
+                "分层降维 + 遗传算法",
+                "31.5572 s"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "算法选择的核心逻辑：4 维空间中模拟退火的随机跳出机制足以避免局部最优；8 维空间中遗传算法的种群并行搜索更高效；12 维空间中引入量子比特编码和量子旋转门，通过叠加态增强种群多样性；40 维空间通过分层降维策略解耦为 5 个 8 维子问题并行求解。"
+          }
+        ]
+      },
+      {
+        "heading": "核心算法创新：混合自适应量子遗传算法",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "问题四面对 12 维搜索空间，传统遗传算法已难以高效收敛。我们提出采用混合自适应量子遗传算法（HAQGA），这是本文的核心算法创新：用量子比特的概率幅编码解空间，使单个染色体同时表征多个候选解；设计自适应旋转门策略，根据个体与全局最优解的适应度差距动态调整旋转角度——远离最优时大步探索，接近时精细搜索；引入灾变机制防止早熟收敛。最终在 12 维空间中实现了 11.67 秒的最优遮蔽时长。"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：模拟退火算法",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "以下为问题二中模拟退火算法的核心迭代逻辑（MATLAB）。算法通过 Metropolis 准则，以概率接受劣解来跳出局部最优，最终收敛至全局最优投放策略。"
+          },
+          {
+            "kind": "code",
+            "caption": "模拟退火核心循环（solve2.m 节选）— 点击展开",
+            "code": "% 模拟退火参数\nT_max = 1000;  T_min = 1e-4;  alpha = 0.99;\n% 决策变量: [无人机速度, 飞行方向, 投放延迟, 引信时间]\nlb = [70, 0, 0.001, 0.001];\nub = [140, 2*pi, 30, 30];\n\nTemp = T_max;\nwhile Temp > T_min\n    for i = 1:iter_L\n        % 对随机维度施加正态扰动生成邻域新解\n        dim = randi(4);\n        perturbation = (ub(dim)-lb(dim)) * (rand-0.5) * (Temp/T_max);\n        new_X(dim) = current_X(dim) + perturbation;\n        new_X(dim) = max(lb(dim), min(ub(dim), new_X(dim)));\n\n        % 调用仿真模型计算新解的遮蔽时长\n        new_T = calculate_total_time(new_X);\n        delta_E = (-new_T) - (-current_T);\n\n        % Metropolis准则：优解直接接受，劣解以概率接受\n        if delta_E < 0\n            current_X = new_X;  current_T = new_T;\n        elseif rand() < exp(-delta_E / Temp)\n            current_X = new_X;  current_T = new_T;\n        end\n    end\n    Temp = Temp * alpha;  % 降温\nend"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：遗传算法",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "问题三将决策空间扩展到 8 维（无人机飞行参数 + 3 枚弹各自的投放/起爆时间），采用遗传算法进行种群并行搜索。关键设计包括 BLX-α 交叉算子、自适应变异率、精英保留和灾变重启机制。"
+          },
+          {
+            "kind": "code",
+            "caption": "遗传算法进化循环（solve3.m 节选）— 点击展开",
+            "code": "pop_size = 200;  max_gen = 3000;  elite_num = 10;\n\nfor gen = 1:max_gen\n    % 并行计算种群适应度\n    parfor i = 1:pop_size\n        fitness(i) = obj(pop(i,:), params);\n    end\n\n    % 停滞检测 -> 触发灾变重启\n    if stag_cnt >= 50\n        sorted_pop = pop(sorted_idx, :);\n        elites = sorted_pop(1:elite_num, :);\n        new_blood = lb + (ub-lb) .* rand(pop_size-elite_num, 8);\n        pop = [elites; new_blood];\n        continue;\n    end\n\n    % 精英保留 + 锦标赛选择 + BLX-α交叉 + 自适应变异\n    next_pop(1:elite_num, :) = sorted_pop(1:elite_num, :);\n    for i = (elite_num+1):pop_size\n        p1 = sorted_pop(tour_select(pop_size), :);\n        p2 = sorted_pop(tour_select(pop_size), :);\n        child = crossover_blend(p1, p2);\n        mut_scale = 1 - (gen/max_gen)^2;\n        child = mutate(child, lb, ub, mut_scale);\n        next_pop(i, :) = repair(child, lb, ub);\n    end\nend"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：量子遗传算法",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "以下是混合自适应量子遗传算法的核心——自适应量子旋转门更新逻辑。旋转角度根据当前个体与全局最优解的适应度差距动态调整。"
+          },
+          {
+            "kind": "code",
+            "caption": "量子旋转门更新（solve4.m 节选）— 点击展开",
+            "code": "% 自适应量子旋转门：根据适应度差距动态调整旋转角度\nfunction delta_theta = get_rotation_params(current_fitness, ...\n        global_best_fitness, current_binary, global_best_binary)\n    s = zeros(1, n_genes);\n    diff_indices = find(current_binary ~= global_best_binary);\n    s(diff_indices(current_binary(diff_indices)==0)) = 1;\n    s(diff_indices(current_binary(diff_indices)==1)) = -1;\n\n    % 适应度差距越大 -> 旋转角越大（大步探索）\n    f_diff = abs(current_fitness - global_best_fitness);\n    f_norm = min(f_diff / max_possible_diff, 1);\n    adaptive_magnitude = theta_min + (theta_max-theta_min) * f_norm;\n    delta_theta = s * adaptive_magnitude;\nend\n\n% 对量子染色体施加旋转门\nfor j = 1:n_genes\n    angle = delta_theta(j);\n    R = [cos(angle), -sin(angle); sin(angle), cos(angle)];\n    q_chromosome(:,j) = R * q_chromosome(:,j);\nend"
+          }
+        ]
+      },
+      {
+        "heading": "结果亮点",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "问题三的最优策略揭示了一个精巧的时间接力模式：三枚烟幕弹的有效遮蔽窗口几乎无缝衔接，重叠仅 0.0037 秒，最大化利用了每枚弹 20 秒的有效周期。问题四的三机协同策略呈现空间分散布局——三架无人机分别从不同方向接近导弹飞行路径，在导弹飞行的不同阶段形成遮蔽，总有效时长达 11.67 秒。"
+          },
+          {
+            "kind": "text",
+            "text": "模型的灵敏度分析表明：遮蔽时长与烟幕半径呈平滑正相关（验证物理合理性）；最优策略对导弹速度高度敏感（±10% 速度变化导致 35% 以上性能下降），说明策略参数是针对特定目标精确计算的。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/math-modeling-smoke/timeline.png",
+            "alt": "三枚烟幕弹有效遮蔽区间时间轴",
+            "caption": "图：问题三最优策略下三枚烟幕弹的有效遮蔽区间，展示时间接力式无缝衔接"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/math-modeling-smoke/topview.png",
+            "alt": "三机协同策略二维俯视图",
+            "caption": "图：问题四最优协同策略俯视图，三架无人机从不同方向接近导弹飞行路径形成空间分散布局"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/math-modeling-smoke/sensitivity.png",
+            "alt": "烟幕半径灵敏度分析",
+            "caption": "图：烟幕半径与总有效遮蔽时长的灵敏度分析，验证模型物理合理性"
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "metaDescription": "2025 CUMCM Problem A, National First Prize. Optimization of smoke screen deployment strategy.",
+    "sections": [
+      {
+        "heading": "获奖证书",
+        "blocks": [
+          {
+            "kind": "image",
+            "caption": "查看证书",
+            "src": "/api/projects/asset/math-modeling-smoke/certificate.jpg"
+          }
+        ]
+      },
+      {
+        "heading": "论文与代码",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "完整竞赛论文（40 页，含 5 个问题的建模、求解与分析）可通过下方链接下载或在线预览。论文附录包含全部 MATLAB 源代码（solve1.m – solve5.m）。"
+          }
+        ],
+        "links": [
+          {
+            "href": "/api/projects/asset/math-modeling-smoke/paper.pdf",
+            "label": "下载竞赛论文 PDF"
+          }
+        ]
+      },
+      {
+        "heading": "赛题概述",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "2025年高教社杯全国大学生数学建模竞赛 A 题《烟幕干扰弹的投放策略的分析与优化》。赛题围绕无人机投放烟幕干扰弹保护地面目标的场景，要求建立精确的物理模型并设计最优投放策略，使烟幕对来袭导弹的有效遮蔽时间最大化。"
+          },
+          {
+            "kind": "text",
+            "text": "题目包含五个递进式子问题：从给定参数下的遮蔽时长计算（确定性仿真），逐步升级到单弹优化（4 维）、多弹协同（8 维）、多机协同（12 维），直至最终的 5 架无人机对抗 3 枚导弹的全局优化（40 维）。我在队伍中主要负责数学建模与算法设计，同时参与编程实现和论文撰写。"
+          }
+        ]
+      },
+      {
+        "heading": "核心建模思路",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "整个模型框架分为两层：底层是描述导弹、无人机、烟幕云团运动状态的运动学模型，以及基于阴影投影的有效遮蔽几何判定模型；上层是基于底层仿真的优化模型，将投放策略参数作为决策变量，以有效遮蔽时长为目标函数进行全局寻优。"
+          },
+          {
+            "kind": "text",
+            "text": "遮蔽判定的关键创新在于将三维空间中的视线遮挡问题转化为二维阴影包含问题：将真目标圆柱体的上下底面圆周均匀取采样点，计算每个采样点到导弹视线与烟幕球心的最短距离，当所有采样点的视线均被烟幕球体截断时判定为有效遮蔽。同时区分了三种物理情形——云团阻挡视线、云团包裹导弹、导弹穿出云团。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/math-modeling-smoke/occlusion.png",
+            "alt": "烟幕云团遮蔽情况示意图",
+            "caption": "图：烟幕云团对真目标的遮蔽情况示意（导弹视线、云团投影与真目标投影的几何关系）"
+          }
+        ]
+      },
+      {
+        "heading": "算法设计：逐维度升级",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "随着问题维度的递增，我设计了四种层次递进的求解策略："
+          },
+          {
+            "kind": "table",
+            "caption": "各子问题的算法选择与求解结果",
+            "headers": [
+              "子问题",
+              "决策维度",
+              "求解算法",
+              "最优遮蔽时长"
+            ],
+            "rows": [
+              [
+                "问题一：给定参数计算",
+                "0（确定性）",
+                "分层搜索 + 二分法",
+                "1.3916 s"
+              ],
+              [
+                "问题二：单机单弹优化",
+                "4 维",
+                "模拟退火算法",
+                "4.5826 s"
+              ],
+              [
+                "问题三：单机三弹协同",
+                "8 维",
+                "遗传算法",
+                "7.5188 s"
+              ],
+              [
+                "问题四：三机各投一弹",
+                "12 维",
+                "混合自适应量子遗传算法",
+                "11.6673 s"
+              ],
+              [
+                "问题五：五机对抗三弹",
+                "40 维（拆分为 5×8）",
+                "分层降维 + 遗传算法",
+                "31.5572 s"
+              ]
+            ]
+          },
+          {
+            "kind": "text",
+            "text": "算法选择的核心逻辑：4 维空间中模拟退火的随机跳出机制足以避免局部最优；8 维空间中遗传算法的种群并行搜索更高效；12 维空间中引入量子比特编码和量子旋转门，通过叠加态增强种群多样性；40 维空间通过分层降维策略解耦为 5 个 8 维子问题并行求解。"
+          }
+        ]
+      },
+      {
+        "heading": "核心算法创新：混合自适应量子遗传算法",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "问题四面对 12 维搜索空间，传统遗传算法已难以高效收敛。我们提出采用混合自适应量子遗传算法（HAQGA），这是本文的核心算法创新：用量子比特的概率幅编码解空间，使单个染色体同时表征多个候选解；设计自适应旋转门策略，根据个体与全局最优解的适应度差距动态调整旋转角度——远离最优时大步探索，接近时精细搜索；引入灾变机制防止早熟收敛。最终在 12 维空间中实现了 11.67 秒的最优遮蔽时长。"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：模拟退火算法",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "以下为问题二中模拟退火算法的核心迭代逻辑（MATLAB）。算法通过 Metropolis 准则，以概率接受劣解来跳出局部最优，最终收敛至全局最优投放策略。"
+          },
+          {
+            "kind": "code",
+            "caption": "模拟退火核心循环（solve2.m 节选）— 点击展开",
+            "code": "% 模拟退火参数\nT_max = 1000;  T_min = 1e-4;  alpha = 0.99;\n% 决策变量: [无人机速度, 飞行方向, 投放延迟, 引信时间]\nlb = [70, 0, 0.001, 0.001];\nub = [140, 2*pi, 30, 30];\n\nTemp = T_max;\nwhile Temp > T_min\n    for i = 1:iter_L\n        % 对随机维度施加正态扰动生成邻域新解\n        dim = randi(4);\n        perturbation = (ub(dim)-lb(dim)) * (rand-0.5) * (Temp/T_max);\n        new_X(dim) = current_X(dim) + perturbation;\n        new_X(dim) = max(lb(dim), min(ub(dim), new_X(dim)));\n\n        % 调用仿真模型计算新解的遮蔽时长\n        new_T = calculate_total_time(new_X);\n        delta_E = (-new_T) - (-current_T);\n\n        % Metropolis准则：优解直接接受，劣解以概率接受\n        if delta_E < 0\n            current_X = new_X;  current_T = new_T;\n        elseif rand() < exp(-delta_E / Temp)\n            current_X = new_X;  current_T = new_T;\n        end\n    end\n    Temp = Temp * alpha;  % 降温\nend"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：遗传算法",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "问题三将决策空间扩展到 8 维（无人机飞行参数 + 3 枚弹各自的投放/起爆时间），采用遗传算法进行种群并行搜索。关键设计包括 BLX-α 交叉算子、自适应变异率、精英保留和灾变重启机制。"
+          },
+          {
+            "kind": "code",
+            "caption": "遗传算法进化循环（solve3.m 节选）— 点击展开",
+            "code": "pop_size = 200;  max_gen = 3000;  elite_num = 10;\n\nfor gen = 1:max_gen\n    % 并行计算种群适应度\n    parfor i = 1:pop_size\n        fitness(i) = obj(pop(i,:), params);\n    end\n\n    % 停滞检测 -> 触发灾变重启\n    if stag_cnt >= 50\n        sorted_pop = pop(sorted_idx, :);\n        elites = sorted_pop(1:elite_num, :);\n        new_blood = lb + (ub-lb) .* rand(pop_size-elite_num, 8);\n        pop = [elites; new_blood];\n        continue;\n    end\n\n    % 精英保留 + 锦标赛选择 + BLX-α交叉 + 自适应变异\n    next_pop(1:elite_num, :) = sorted_pop(1:elite_num, :);\n    for i = (elite_num+1):pop_size\n        p1 = sorted_pop(tour_select(pop_size), :);\n        p2 = sorted_pop(tour_select(pop_size), :);\n        child = crossover_blend(p1, p2);\n        mut_scale = 1 - (gen/max_gen)^2;\n        child = mutate(child, lb, ub, mut_scale);\n        next_pop(i, :) = repair(child, lb, ub);\n    end\nend"
+          }
+        ]
+      },
+      {
+        "heading": "关键代码：量子遗传算法",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "以下是混合自适应量子遗传算法的核心——自适应量子旋转门更新逻辑。旋转角度根据当前个体与全局最优解的适应度差距动态调整。"
+          },
+          {
+            "kind": "code",
+            "caption": "量子旋转门更新（solve4.m 节选）— 点击展开",
+            "code": "% 自适应量子旋转门：根据适应度差距动态调整旋转角度\nfunction delta_theta = get_rotation_params(current_fitness, ...\n        global_best_fitness, current_binary, global_best_binary)\n    s = zeros(1, n_genes);\n    diff_indices = find(current_binary ~= global_best_binary);\n    s(diff_indices(current_binary(diff_indices)==0)) = 1;\n    s(diff_indices(current_binary(diff_indices)==1)) = -1;\n\n    % 适应度差距越大 -> 旋转角越大（大步探索）\n    f_diff = abs(current_fitness - global_best_fitness);\n    f_norm = min(f_diff / max_possible_diff, 1);\n    adaptive_magnitude = theta_min + (theta_max-theta_min) * f_norm;\n    delta_theta = s * adaptive_magnitude;\nend\n\n% 对量子染色体施加旋转门\nfor j = 1:n_genes\n    angle = delta_theta(j);\n    R = [cos(angle), -sin(angle); sin(angle), cos(angle)];\n    q_chromosome(:,j) = R * q_chromosome(:,j);\nend"
+          }
+        ]
+      },
+      {
+        "heading": "结果亮点",
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "问题三的最优策略揭示了一个精巧的时间接力模式：三枚烟幕弹的有效遮蔽窗口几乎无缝衔接，重叠仅 0.0037 秒，最大化利用了每枚弹 20 秒的有效周期。问题四的三机协同策略呈现空间分散布局——三架无人机分别从不同方向接近导弹飞行路径，在导弹飞行的不同阶段形成遮蔽，总有效时长达 11.67 秒。"
+          },
+          {
+            "kind": "text",
+            "text": "模型的灵敏度分析表明：遮蔽时长与烟幕半径呈平滑正相关（验证物理合理性）；最优策略对导弹速度高度敏感（±10% 速度变化导致 35% 以上性能下降），说明策略参数是针对特定目标精确计算的。"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/math-modeling-smoke/timeline.png",
+            "alt": "三枚烟幕弹有效遮蔽区间时间轴",
+            "caption": "图：问题三最优策略下三枚烟幕弹的有效遮蔽区间，展示时间接力式无缝衔接"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/math-modeling-smoke/topview.png",
+            "alt": "三机协同策略二维俯视图",
+            "caption": "图：问题四最优协同策略俯视图，三架无人机从不同方向接近导弹飞行路径形成空间分散布局"
+          },
+          {
+            "kind": "image",
+            "src": "/api/projects/asset/math-modeling-smoke/sensitivity.png",
+            "alt": "烟幕半径灵敏度分析",
+            "caption": "图：烟幕半径与总有效遮蔽时长的灵敏度分析，验证模型物理合理性"
+          }
+        ]
+      }
+    ]
+  }
+}

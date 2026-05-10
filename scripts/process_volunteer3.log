@@ -1,0 +1,51 @@
+Found 13 source folders
+Matched '01-τáöτ⌐╢τöƒΦÇâΦ»òσ┐ùµä┐'
+  JPG files (2): ["'µ┤╗σè¿Φç¬µïì.jpg'", "'Φ»üΣ╣ª.jpg'"]
+  OK: 'µ┤╗σè¿Φç¬µïì.jpg' -> photo.jpg
+  OK: 'Φ»üΣ╣ª.jpg' -> cert.jpg
+Matched '02-σìùµ₧ùµ¿▒Φè▒Φèé'
+  JPG files (3): ["'µ┤╗σè¿τàºτëç1.jpg'", "'µ┤╗σè¿τàºτëç2.jpg'", "'Φ»üΣ╣ª.jpg'"]
+  OK: 'µ┤╗σè¿τàºτëç1.jpg' -> photo1.jpg
+  OK: 'µ┤╗σè¿τàºτëç2.jpg' -> photo2.jpg
+  OK: 'Φ»üΣ╣ª.jpg' -> cert.jpg
+Matched '03-σƒÄσ╕éµûçµÿÄτñ║Φîâσ▓ù'
+  JPG files (3): ["'µ┤╗σè¿τàºτëç1.jpg'", "'µ┤╗σè¿τàºτëç2.jpg'", "'Φ»üΣ╣ª.jpg'"]
+  OK: 'µ┤╗σè¿τàºτëç1.jpg' -> photo1.jpg
+  OK: 'µ┤╗σè¿τàºτëç2.jpg' -> photo2.jpg
+  OK: 'Φ»üΣ╣ª.jpg' -> cert.jpg
+Multiple matches for 04-, picked '04-鐖卞績绛戞ⅵ闈掔泭鍗椾含' with 2 jpgs
+  JPG files (2): ["'娲诲姩鐓х墖.jpg'", "'璇佷功.jpg'"]
+  OK: '娲诲姩鐓х墖.jpg' -> photo.jpg
+  OK: '璇佷功.jpg' -> cert.jpg
+Multiple matches for 05-, picked '05-ΘçæΘÖ╡STYLE' with 1 jpgs
+  JPG files (1): ["'µ┤╗σè¿Φç¬µïì.jpg'"]
+  MISMATCH: expected 2 files, got 1
+  OK: 'µ┤╗σè¿Φç¬µïì.jpg' -> photo.jpg
+Matched '06-ΘçæΘ╛ƒσ¡ÉΦë║µ£»Φèé'
+  JPG files (1): ["'Φ»üΣ╣ª.jpg'"]
+  OK: 'Φ»üΣ╣ª.jpg' -> cert.jpg
+Matched '07-σ¢╜ΘÖàµáçσçåΦê₧'
+  JPG files (3): ["'µ┤╗σè¿τàºτëç1.jpg'", "'µ┤╗σè¿τàºτëç2.jpg'", "'Φ»üΣ╣ª.jpg'"]
+  OK: 'µ┤╗σè¿τàºτëç1.jpg' -> photo1.jpg
+  OK: 'µ┤╗σè¿τàºτëç2.jpg' -> photo2.jpg
+  OK: 'Φ»üΣ╣ª.jpg' -> cert.jpg
+Matched '08-閾跺煄鑺卞洯绀惧尯'
+  JPG files (1): ["'璇佷功.jpg'"]
+  OK: '璇佷功.jpg' -> cert.jpg
+Matched '09-ΦïÅΦ╢àσìèσå│Φ╡¢'
+  JPG files (2): ["'Φ»üΣ╣ª.jpg'", "'σ┐ùµä┐σ░ÅΘÿƒσ£¿Σ╜ôΦé▓σ£║σÉêτàº.jpg'"]
+  OK: 'Φ»üΣ╣ª.jpg' -> photo.jpg
+  OK: 'σ┐ùµä┐σ░ÅΘÿƒσ£¿Σ╜ôΦé▓σ£║σÉêτàº.jpg' -> cert.jpg
+Matched '10-ΦïÅΦ╢àµÇ╗σå│Φ╡¢'
+  JPG files (2): ["'µ┤╗σè¿σÉêτàº.jpg'", "'Φ»üΣ╣ª.jpg'"]
+  OK: 'µ┤╗σè¿σÉêτàº.jpg' -> photo.jpg
+  OK: 'Φ»üΣ╣ª.jpg' -> cert.jpg
+Matched '11-σìùΣ║¼Θ⌐¼µïëµ¥╛'
+  JPG files (3): ["'µ┤╗σè¿τàºτëç1.jpg'", "'µ┤╗σè¿τàºτëç2.jpg'", "'Φ»üΣ╣ª.jpg'"]
+  OK: 'µ┤╗σè¿τàºτëç1.jpg' -> photo1.jpg
+  OK: 'µ┤╗σè¿τàºτëç2.jpg' -> photo2.jpg
+  OK: 'Φ»üΣ╣ª.jpg' -> cert.jpg
+Created: cherry-blossom/photo.jpg
+Created: city-civilized/photo.jpg
+Created: standard-dance/photo.jpg
+Created: nanjing-marathon/photo.jpg
