@@ -6,6 +6,7 @@ import { scoreFootprint, type FootprintMap } from "@/lib/life/footprint";
 import type { MomentDTO } from "@/lib/life/loadMoments";
 import { lifeCopy } from "@/lib/siteCopy";
 import { PageShell } from "../components/PageShell";
+import { PasswordGuard } from "../components/PasswordGuard";
 import { useSite } from "../components/SiteProvider";
 import { LifeAvatar } from "./LifeAvatar";
 import { ChinaFootprintMap } from "./ChinaFootprintMap";
@@ -27,6 +28,7 @@ export function LifePageClient({ footprint, moments }: Props) {
   const avatarSrc = "/logo.png";
 
   return (
+    <PasswordGuard>
     <PageShell>
       <div className="space-y-0">
         <header className="flex flex-wrap items-end justify-between gap-4">
@@ -104,5 +106,6 @@ export function LifePageClient({ footprint, moments }: Props) {
         </section>
       </div>
     </PageShell>
+    </PasswordGuard>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { PageShell } from "../components/PageShell";
+import { PasswordGuard } from "../components/PasswordGuard";
 import { useSite } from "../components/SiteProvider";
 
 type FriendEntry = {
@@ -30,6 +31,7 @@ export function FriendsPageClient({ items }: Props) {
   const t = copy[locale];
 
   return (
+    <PasswordGuard>
     <PageShell>
       <h1 className="text-2xl font-semibold tracking-tight text-foreground">
         {t.title}
@@ -73,5 +75,6 @@ export function FriendsPageClient({ items }: Props) {
         </ul>
       )}
     </PageShell>
+    </PasswordGuard>
   );
 }
