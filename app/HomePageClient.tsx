@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  INTRO_ACCESS_STORAGE_KEY,
+  DOWNLOAD_AUTH_COOKIE,
+} from "@/lib/accessControl";
 import { TypewriterText } from "./components/TypewriterText";
 
 const copy = {
@@ -20,6 +24,28 @@ const copy = {
 
 export function HomePageClient() {
   const [line1Done, setLine1Done] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("key");
+    if (!key) return;
+
+    fetch(`/api/auth/verify?key=${encodeURIComponent(key)}`)
+      .then((res) => res.json())
+      .then((data: { ok?: boolean }) => {
+        if (data.ok) {
+          try {
+            localStorage.setItem(INTRO_ACCESS_STORAGE_KEY, "1");
+          } catch { /* ignore */ }
+          try {
+            document.cookie = `${DOWNLOAD_AUTH_COOKIE}=1; path=/; max-age=2592000`;
+          } catch { /* ignore */ }
+          const url = new URL(window.location.href);
+          url.searchParams.delete("key");
+          window.history.replaceState({}, "", url.toString());
+        }
+      });
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center px-6 pb-28 pt-20 text-center sm:pt-32">
