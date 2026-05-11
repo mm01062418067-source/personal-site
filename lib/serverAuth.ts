@@ -5,4 +5,8 @@
  */
 
 export const SITE_PASSWORD = process.env.SITE_PASSWORD ?? "";
-export const SITE_ACCESS_KEY = process.env.SITE_ACCESS_KEY ?? "";
+export const SITE_PASSWORDS = SITE_PASSWORD
+  .split(",")
+  .map((s) => s.trim())
+  .filter((s) => s.length > 0);
+export const SITE_ACCESS_KEY = process.env.SITE_ACCESS_KEY ?? "";  

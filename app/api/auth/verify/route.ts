@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
-import { SITE_PASSWORD, SITE_ACCESS_KEY } from "@/lib/serverAuth";
+import { SITE_PASSWORDS, SITE_ACCESS_KEY } from "@/lib/serverAuth";
 
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as { password?: string };
     const ok =
       typeof body.password === "string" &&
-      body.password.trim() === SITE_PASSWORD &&
-      SITE_PASSWORD !== "";
+      SITE_PASSWORDS.includes(body.password.trim()) &&
+      SITE_PASSWORDS.length > 0;
     return NextResponse.json({ ok });
   } catch {
     return NextResponse.json({ ok: false }, { status: 400 });
