@@ -1,1 +1,1 @@
-﻿[Only Slime](https://www.onlyslime.online)
+[Slime](https://www.onlyslime.online)
