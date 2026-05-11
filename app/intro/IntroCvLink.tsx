@@ -9,6 +9,7 @@ const profileRows = [
   ["政治面貌", "中共党员"],
   ["专业排名", "2/73（已确定获得保研资格）"],
   ["本科专业", "电子信息工程"],
+  ["英语水平", "CET-4 499"],
 ] as const;
 
 export function IntroCvLink() {
