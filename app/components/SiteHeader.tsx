@@ -23,7 +23,11 @@ export function SiteHeader() {
 
   const isActive = (href: string) => {
     if (href === "/projects") {
-      return pathname === "/projects" || pathname.startsWith("/projects/");
+      return pathname === "/projects" ||
+        (pathname.startsWith("/projects/") && pathname !== "/projects/spectral-transfer");
+    }
+    if (href === "/research") {
+      return pathname === "/research" || pathname === "/projects/spectral-transfer";
     }
     return pathname === href;
   };
