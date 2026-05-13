@@ -19,7 +19,7 @@ function VolunteerPhotoGallery({
       {photos.map((name, i) => (
         <img
           key={name}
-          src={`/api/life/file/volunteer/${slug}/${name}`}
+          src={`/api/life/file/volunteer/${slug}/${name}${BUILD_TIME ? `?v=${BUILD_TIME}` : ""}`}
           alt={`活动照片 ${i + 1}`}
           loading="lazy"
           className="w-full rounded-lg border border-border object-cover"
@@ -96,10 +96,12 @@ export function LifeVolunteerSection() {
         {items.map((item) => {
           const photos = photoMap[item.slug] ?? [];
           const hasPhotos = photos.length > 0;
+          const BUILD_TIME = process.env.NEXT_PUBLIC_BUILD_TIME ?? "";
+          const cacheBust = BUILD_TIME ? `?v=${BUILD_TIME}` : "";
           const thumbnailSrc = hasPhotos
-            ? `/api/life/file/volunteer/${item.slug}/${photos[0]}`
+            ? `/api/life/file/volunteer/${item.slug}/${photos[0]}${cacheBust}`
             : null;
-          const certSrc = `/api/life/file/volunteer/${item.slug}/cert.jpg`;
+          const certSrc = `/api/life/file/volunteer/${item.slug}/cert.jpg${cacheBust}`;
           const isPhotoExpanded = expandedPhotoSlug === item.slug;
           const isCertExpanded = expandedCertSlug === item.slug;
 

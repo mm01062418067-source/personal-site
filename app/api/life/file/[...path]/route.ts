@@ -53,7 +53,7 @@ export async function GET(
   return new NextResponse(buf, {
     headers: {
       "Content-Type": contentType,
-      "Cache-Control": "public, max-age=3600",
+      "Cache-Control": "public, max-age=60, must-revalidate",
     },
   });
 }
