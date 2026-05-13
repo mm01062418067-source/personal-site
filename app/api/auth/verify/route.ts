@@ -5,9 +5,9 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as { password?: string };
     const ok =
-      typeof body.password === "string" &&
-      SITE_PASSWORDS.includes(body.password.trim()) &&
-      SITE_PASSWORDS.length > 0;
+      SITE_PASSWORDS.length === 0 ||
+      (typeof body.password === "string" &&
+        SITE_PASSWORDS.includes(body.password.trim()));
     return NextResponse.json({ ok });
   } catch {
     return NextResponse.json({ ok: false }, { status: 400 });

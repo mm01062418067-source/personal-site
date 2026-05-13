@@ -84,7 +84,16 @@ export function PasswordGuard({ children }: Props) {
           window.history.replaceState({}, "", url.toString());
         }
       });
+      return;
     }
+
+    // 3) 检查是否未设置密码（无密码保护）
+    verifyPassword("").then((ok) => {
+      if (ok) {
+        setGranted(true);
+        setAccessGranted();
+      }
+    });
   }, []);
 
   const submit = async () => {
