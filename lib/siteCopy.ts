@@ -64,7 +64,7 @@ export const introCopy = {
     profileExpectedRecommendationRank: "籍贯：江苏宿迁；政治面貌：中共党员",
     profileProofLabel: "（下载证明）",
     profileEnglishLevelPrefix: "专业排名：",
-    profileCET6Label: "2/73（已确定获得保研资格）",
+    profileCET6Label: "1/73（已确定获得保研资格）",
     profileAlgorithmLevel:
       "综合定位：电子信息工程本科生，具备科研建模、算法优化与嵌入式系统实践经历。",
     contactHeading: "联系方式",
@@ -100,7 +100,7 @@ export const introCopy = {
     profileExpectedRecommendationRank: "籍贯：江苏宿迁；政治面貌：中共党员",
     profileProofLabel: "（下载证明）",
     profileEnglishLevelPrefix: "专业排名：",
-    profileCET6Label: "2/73（已确定获得保研资格）",
+    profileCET6Label: "1/73（已确定获得保研资格）",
     profileAlgorithmLevel:
       "综合定位：电子信息工程本科生，具备科研建模、算法优化与嵌入式系统实践经历。",
     contactHeading: "联系方式",
