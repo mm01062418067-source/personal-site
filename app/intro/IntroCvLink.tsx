@@ -20,7 +20,7 @@ export function IntroCvLink() {
     <div className="mt-6 space-y-5">
       <div className="flex flex-wrap gap-4">
         <a
-          href={INTRO_CV_PATH}
+          href={`${INTRO_CV_PATH}?v=3`}
           download="huang-ziyi-cv.pdf"
           className="inline-flex text-lg font-medium text-link underline decoration-link/40 underline-offset-[5px] transition-colors hover:text-link-hover hover:decoration-link-hover/40"
         >
