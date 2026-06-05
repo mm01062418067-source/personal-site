@@ -252,10 +252,10 @@ export const INTRO_RESEARCH_SOFTWARE: Record<
         "《手持式植物叶片重金属光谱检测仪的研发》，项目负责人，已结项。",
     },
     {
-      date: "一审中",
+      date: "审稿中",
       abbr: "SCI 论文",
       name:
-        "Cross-species transfer of foliar dust retention by UV–Vis–NIR spectroscopy: classification and quantitative evaluation，第一作者，投稿至 Microchemical Journal。",
+        "Cross-species transfer of foliar dust retention by UV–Vis–NIR spectroscopy: classification and quantitative evaluation，第一作者，投稿至相关 SCI 期刊。",
     },
     {
       date: "研究贡献",
@@ -272,10 +272,10 @@ export const INTRO_RESEARCH_SOFTWARE: Record<
         "《手持式植物叶片重金属光谱检测仪的研发》，项目负责人，已结项。",
     },
     {
-      date: "一审中",
+      date: "审稿中",
       abbr: "SCI 论文",
       name:
-        "Cross-species transfer of foliar dust retention by UV–Vis–NIR spectroscopy: classification and quantitative evaluation，第一作者，投稿至 Microchemical Journal。",
+        "Cross-species transfer of foliar dust retention by UV–Vis–NIR spectroscopy: classification and quantitative evaluation，第一作者，投稿至相关 SCI 期刊。",
     },
     {
       date: "研究贡献",
