@@ -4,6 +4,8 @@
  * 密码保护已关闭，所有文件下载无需认证。
  */
 
+export const DOWNLOAD_AUTH_COOKIE = "site_auth";
+
 export function isDownloadAuthorized(_request?: Request): boolean {
   return true;
 }

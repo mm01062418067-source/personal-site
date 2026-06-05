@@ -27,7 +27,7 @@ export function IntroCvLink() {
           {t.cvLinkLabel}
         </a>
         <a
-          href={`${INTRO_CV_PATH}?preview&v=3`}
+          href={`${INTRO_CV_PATH}?preview&v=4`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex text-lg font-medium text-link underline decoration-link/40 underline-offset-[5px] transition-colors hover:text-link-hover hover:decoration-link-hover/40"

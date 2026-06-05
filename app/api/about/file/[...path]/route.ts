@@ -60,7 +60,7 @@ export async function GET(
     headers: {
       "Content-Type": contentType,
       "Content-Disposition": `${disposition}; filename*=UTF-8''${encodeURIComponent(filename)}`,
-      "Cache-Control": "public, max-age=3600",
+      "Cache-Control": "public, max-age=0, must-revalidate",
     },
   });
 }
